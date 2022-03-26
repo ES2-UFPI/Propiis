@@ -28,7 +28,7 @@ const Header = () => {
             <li className="borda">Proteja sua privacidade</li>
           </ul>
         </div>
-        
+         
         <div className="redes-sociais">
           <div className="rede">
             <img src="./icons/insta.svg" alt="icon"/>

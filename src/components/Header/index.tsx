@@ -40,16 +40,17 @@ const Header = () => {
         </div>
 
       </Container>
-      {openOp ? 
+      {openOp ?
         <ul className="opcoes">
           <li>Meu perfil</li>
           <li>Propriedades</li>
           <li>Favoritos</li>
           <li id="sair">Sair</li>
         </ul>
-        : null
+        :
+        null
       }
-      
+
     </Geral>
   );
 };

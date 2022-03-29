@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import { useState } from 'react';
 
 const Map = () => {
-    const [ tam, setTam ]= useState(14);
+    const [ tam, setTam ]= useState(13);
 
     const mapIcon = Leaflet.icon({
         iconUrl: "./icons/pin.svg",

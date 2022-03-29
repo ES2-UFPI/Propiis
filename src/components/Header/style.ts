@@ -78,12 +78,14 @@ export const Container = styled.div`
 
 export const Geral = styled.div`
     width: 100%;
+    
     ul.opcoes{
-        position: relative;
-        top: 10px;
-        left: 1000px;
-        width: 331px;
-        height: 248px;
+        z-index: 10;
+        position: absolute;
+        top: 60px;
+        right: 100px ;
+        width: 300px;
+        height: 200px;
 
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -100,7 +102,7 @@ export const Geral = styled.div`
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 500;
-            font-size: 1.4rem;
+            font-size: 1rem;
 
             color: #535C68;
             cursor: pointer; 

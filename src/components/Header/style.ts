@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div` 
-    width: 100%;
-    height: 76px;
+    width: 100%; 
+    height: 55px;
     background: #FFFFFF;
     box-shadow: 0px 2.25px 4.5px rgba(180, 180, 180, 0.15);
     display: flex;
@@ -10,8 +10,8 @@ export const Container = styled.div`
     justify-content: space-around;
 
     img#logo{
-        width: 150.06px;
-        height: 53px;
+        width: 130.06px;
+        height: 43px;
         cursor: pointer;   
     }
 
@@ -21,7 +21,7 @@ export const Container = styled.div`
         font-family: 'Manrope';
         font-style: normal;
         font-weight: 500;
-        font-size: 1.4rem;
+        font-size: 1rem;
 
         color: #371E56;
         cursor: pointer; 
@@ -34,8 +34,8 @@ export const Container = styled.div`
         cursor: pointer; 
 
         .border-image{
-            width: 84px;
-            height: 61px;
+            width: 64px;
+            height: 50px;
             background: #F3F3F3;
             border-radius: 40px;
 
@@ -44,8 +44,8 @@ export const Container = styled.div`
             justify-content: center ;
             
             img{
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -53,7 +53,7 @@ export const Container = styled.div`
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
 
             color: #0B194A;
         }
@@ -77,12 +77,15 @@ export const Container = styled.div`
 `;
 
 export const Geral = styled.div`
+    width: 100%;
+    
     ul.opcoes{
-        position: relative;
-        top: 10px;
-        left: 1000px;
-        width: 331px;
-        height: 248px;
+        z-index: 10;
+        position: absolute;
+        top: 60px;
+        right: 100px ;
+        width: 300px;
+        height: 200px;
 
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -99,7 +102,7 @@ export const Geral = styled.div`
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 500;
-            font-size: 1.4rem;
+            font-size: 1rem;
 
             color: #535C68;
             cursor: pointer; 

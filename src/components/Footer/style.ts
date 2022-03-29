@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div` 
     width: 100%;
-    height: 346px;
+
+    height: 230px;
+    padding: 20px 100px;
+
 
     background: #4A598F;
     display: flex;
@@ -31,7 +34,8 @@ export const Body = styled.div`
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 600;
-            font-size: 16px;
+
+            font-size: 0.8rem;
             line-height: 150%;
             width: 150px;
 
@@ -54,8 +58,8 @@ export const Body = styled.div`
                 font-family: 'Manrope';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 1.4rem;
 
+                font-size: 1rem;
                 color: #FFFFFF;
                 cursor: pointer; 
             }
@@ -72,8 +76,8 @@ export const Body = styled.div`
                 font-family: 'Manrope';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 1.4rem;
 
+                font-size: 1rem;
                 color: #FFFFFF;
                 cursor: pointer; 
                 border-left: 1px solid transparent;
@@ -93,6 +97,7 @@ export const Body = styled.div`
     }
 
     .redes-sociais{
+        margin-left: 20px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -100,8 +105,8 @@ export const Body = styled.div`
         .rede{
             cursor: pointer;
             img{
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
             display: flex;
             gap: 10px;
@@ -118,14 +123,14 @@ export const Body = styled.div`
 
         #facebook{
             img{
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
         }
 
         button{
-            width: 280px;
-            height: 55px;
+            width: 200px;
+            height: 45px;
 
             background: #FFFFFF;
             border-radius: 12px;
@@ -138,9 +143,11 @@ export const Body = styled.div`
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
-            font-size: 16px;
+
+            font-size: 0.9rem;
             line-height: 19px;
             letter-spacing: -0.045em;
+            border: none;
 
             color: #371E56;
         }

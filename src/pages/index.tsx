@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Container, Corpo, Pesquisa, Sugestoes, SugestoesCasas } from "../styles/home";
+import { Container, Corpo, Pesquisa, Sugestoes } from "../styles/home";
 
 const Home: NextPage = () => {
 

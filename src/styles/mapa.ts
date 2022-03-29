@@ -55,5 +55,5 @@ export const Container = styled.div`
 
 
 export const Corpo = styled.div` 
-    width: 1449px;
+    width: 100%;
 `;

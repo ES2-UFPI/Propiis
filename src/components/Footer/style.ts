@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div` 
     width: 100%;
+
     height: 230px;
     padding: 20px 100px;
+
 
     background: #4A598F;
     display: flex;
@@ -32,6 +34,7 @@ export const Body = styled.div`
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 600;
+
             font-size: 0.8rem;
             line-height: 150%;
             width: 150px;
@@ -55,8 +58,8 @@ export const Body = styled.div`
                 font-family: 'Manrope';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 1rem;
 
+                font-size: 1rem;
                 color: #FFFFFF;
                 cursor: pointer; 
             }
@@ -73,8 +76,8 @@ export const Body = styled.div`
                 font-family: 'Manrope';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 1rem;
 
+                font-size: 1rem;
                 color: #FFFFFF;
                 cursor: pointer; 
                 border-left: 1px solid transparent;
@@ -140,6 +143,7 @@ export const Body = styled.div`
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
+
             font-size: 0.9rem;
             line-height: 19px;
             letter-spacing: -0.045em;

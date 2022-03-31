@@ -42,7 +42,7 @@ const Header = () => {
       </Container>
       {openOp ?
         <ul className="opcoes">
-          <li>Meu perfil</li>
+          <li><a href="/perfil">Meu perfil</a></li>
           <li>Propriedades</li>
           <li>Favoritos</li>
           <li id="sair">Sair</li>

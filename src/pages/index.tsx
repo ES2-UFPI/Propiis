@@ -53,12 +53,10 @@ const Home: NextPage = () => {
 
   async function handleSubmit(){
     const api = setupApi();
-    const result = await api.get(`propriedades/Teresina`);
+    const result = await api.get(`propriedades/${localizacao}`);
     console.log(result.data);
     
   }
-
-  handleSubmit();
 
   return (
     <Container>
@@ -72,7 +70,11 @@ const Home: NextPage = () => {
         <Pesquisa>
           <div className="filtro">
             Localização? 
-            <input placeholder="Ex: Rio de Janeiro" />
+            <input 
+              placeholder="Ex: Rio de Janeiro"
+              onChange={(e) => setLocalizacao(e.target.value)}
+              value={localizacao} 
+            />
           </div>
 
           <div className="filtro">
@@ -96,10 +98,16 @@ const Home: NextPage = () => {
           <div 
             className="filtro">
               Hóspedes 
-            <input placeholder="Ex: 3" />
+            <input 
+              placeholder="Ex: 3" 
+              type="number"
+            />
           </div>
 
-          <button>Buscar</button>
+          <button
+            onClick={ () => handleSubmit()}
+          >Buscar
+          </button>
         </Pesquisa>
 
         <div className="calendarios">

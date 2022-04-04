@@ -167,6 +167,10 @@ export const Pesquisa = styled.div`
         font-weight: 400;
         font-size: 1rem;
         color: white;
+
+        :hover{
+            opacity: 80%;
+        }
     }
 
     div {

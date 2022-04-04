@@ -169,7 +169,7 @@ const Home: NextPage = () => {
          
           <Sugestoes>
             <div className="texto">Encontre os melhores imóveis para o seu conforto</div>
-            <div className="texto_menor">Dê uma olhada em algumas sugestões</div>
+            <div className="texto_menor">{isFound ? `Dê uma olhada nas propriedades de ${localizacao}` : "Dê uma olhada em algumas sugestões"}</div>
 
 
 

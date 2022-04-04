@@ -188,10 +188,12 @@ export const Sugestoes = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
+    gap: 10px;
     .texto_menor{
         width: 888px;
-        height: 140px;
-        margin-top: 70px;
+       
+        margin-top: 30px;
 
         font-family: 'Inter';
         font-style: normal;
@@ -208,9 +210,8 @@ export const Sugestoes = styled.div`
 
     .texto{
         width: 888px;
-        height: 140px;
         
-        margin-top: 100px;
+        margin-top: 150px;
 
         font-family: 'Inter';
         font-style: normal;

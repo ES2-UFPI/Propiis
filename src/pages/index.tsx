@@ -8,7 +8,27 @@ import 'react-calendar/dist/Calendar.css';
 import {AiFillCloseCircle } from 'react-icons/ai';
 import axios from "axios";
 import { setupApi } from "../services/api";
+import CardPropriedade from "../components/CardPropriedade";
 
+
+interface PropriedadesProps{
+  _id: string,
+	titulo : string,
+	descricao: string,
+	fotos: string[],
+  preco_diaria: number,
+	taxa: number,
+	quartos : number,
+	banheiros : number,
+	localizacao: {
+    endereco: string,
+    cidade: string,
+    estado: string,
+    coordinates: number[],
+    type: string,
+  },
+	reservada: boolean;
+}
 
 const Home: NextPage = () => {
   const [value, onChange] = useState(new Date());
@@ -21,6 +41,9 @@ const Home: NextPage = () => {
   const [openCalendar2, setOpenCalendar2] = useState(false);
   const [valorInput1, setValorInput1] = useState("");
   const [valorInput2, setValorInput2] = useState("");
+
+  const [isFound, setIsFound] = useState(false);
+  const [propriedades, setPropriedades] = useState<PropriedadesProps[]>([]);
 
 
   function dadosDate(){
@@ -53,8 +76,17 @@ const Home: NextPage = () => {
 
   async function handleSubmit(){
     const api = setupApi();
-    const result = await api.get(`propriedades/${localizacao}`);
-    console.log(result.data);
+    try{
+      const result = await api.get(`propriedades/${localizacao}`);
+      setPropriedades(result.data.propriedades);
+      console.log(propriedades);
+      setIsFound(true);
+    }catch (e) {
+      console.log(e);
+    }
+    
+
+    
     
   }
 
@@ -138,6 +170,55 @@ const Home: NextPage = () => {
           <Sugestoes>
             <div className="texto">Encontre os melhores imóveis para o seu conforto</div>
             <div className="texto_menor">Dê uma olhada em algumas sugestões</div>
+
+
+
+
+            {isFound ?  
+              <>
+                
+                {
+                  propriedades.map(x => (
+                    
+                    <CardPropriedade 
+                      key={x._id}
+                      title={x.titulo}
+                      srcImg={x.fotos[0]}
+                      price={x.preco_diaria}
+                      taxa={x.taxa}
+                      description={x.descricao}
+                      shower={x.banheiros}
+                      bedrooms={x.quartos}
+                    />
+                  ) )
+                  
+                }
+
+              </>
+              :
+              <>
+              <CardPropriedade 
+                title="Apartamento completo na Grande São Paulo"
+                price={100}
+                taxa={20}
+                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                shower={2}
+                bedrooms={2}
+              />
+
+              <CardPropriedade 
+                title="Apartamento completo na Grande São Paulo"
+                price={100}
+                taxa={20}
+                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                shower={2}
+                bedrooms={2}
+              />
+              </>
+            }
+
+            
+            
             
           </Sugestoes>
 

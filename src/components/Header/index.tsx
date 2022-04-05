@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, Geral } from "./style";
 
 const Header = () => {
-  const [logado, setLogado] = useState(true);
+  const [logado, setLogado] = useState(false);
   const [openOp, setOpenOp] = useState(false);
 
   return (

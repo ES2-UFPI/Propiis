@@ -46,11 +46,15 @@ const Home: NextPage = () => {
   const [propriedades, setPropriedades] = useState<PropriedadesProps[]>([]);
 
 
+  var diamensal1,diamensal2;
+
   function dadosDate(){
     var valores = value.toString();
     var [ diaSemanal, mes, diaMensal, ano, ...rest] = valores.split(' ');
     console.log(diaMensal, mes, ano);
     setValorInput1(diaMensal + " " + mes + " "+ ano);
+    diamensal1 = parseInt(diaMensal);
+    
     setOpenCalendar(false);
   }
 
@@ -65,6 +69,8 @@ const Home: NextPage = () => {
     var [ diaSemanal, mes, diaMensal, ano, ...rest] = valores.split(' ');
     console.log(diaMensal, mes, ano);
     setValorInput2(diaMensal + " " + mes + " "+ ano);
+
+    diamensal2 = parseInt(diaMensal);
     setOpenCalendar2(false);
   }
 

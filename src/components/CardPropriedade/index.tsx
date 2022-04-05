@@ -31,8 +31,8 @@ const CardPropriedade = ({
       <img src={srcImg == "" ? "./images/fotoCasa.svg" : srcImg} alt="photo" id="photo"/>
       <div className="data">
         <h1>{title}</h1>
-        <h2>preço diária: R$ {price},00</h2>
-        <h3 >taxa diária: R$ {taxa * price}</h3>
+        <h2>preço: R$ {price},00</h2>
+        <h3 >taxa de manutencao: R$ {taxa * price}</h3>
         <p>{description}</p> 
         
         <div className="quant">

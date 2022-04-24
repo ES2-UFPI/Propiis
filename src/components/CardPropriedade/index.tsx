@@ -13,6 +13,23 @@ interface CardProps  {
   bedrooms?: number;
 }
 
+/*const imgs = document.getElementById("img");
+const img = document.querySelectorAll("#img img");
+let idx = 0;
+
+function carrossel(){
+  idx++;
+
+  if(idx > img.length -1){
+    idx = 0;
+  }
+
+  imgs.style.transform = `translateX(${-idx * 500}px)`;
+}
+
+setInterval(carrossel, 1800);*/
+
+
 const CardPropriedade = ({
   title = "",
   srcImg = "", 
@@ -24,8 +41,10 @@ const CardPropriedade = ({
   ...rest
 }: CardProps) => {
 
-  
+    const[open,setOpen] = useState(false);
 
+
+  
   return (
     <Container>
       <img src={srcImg == "" ? "./images/fotoCasa.svg" : srcImg} alt="photo" id="photo"/>
@@ -43,12 +62,38 @@ const CardPropriedade = ({
         </div>
 
         <div className="botoes">
-          <button className="botao1"> +informações</button>
+          <button className="botao1" onClick={() => setOpen(true)}> +informações</button>
+          
           <button >tenho interesse</button>
         </div>
       </div>
+
+      
+      {open?
+        <div id="modal-info" className="modal-container">
+        <div className="modal">
+          <button className="fechar" onClick={() => setOpen(false)}>x</button>
+          <h3 className="info">Descrição:</h3>
+          <p className="info">Casa recem formada, jardim impecável, garagens e vizinhança ótima, possui piscina e churrasqueira liberrados. Almoço por sua responsabilidade.</p>
+          <h3 className="info">Localização:</h3>
+          <p className="info">--Mapa--</p>
+          <h3 className="info">Valor:</h3>
+          <p className="info">R$100/dia</p>
+        </div>
+      </div>: null}
     </Container>
   );
+
+
 };
 
 export default CardPropriedade;
+
+/* <div className="carrossel">
+            <div className="img-container" id="img">
+              <img src="./images/fotocasa2.svg"></img>
+              <img src="./images/fotocasa1.svg"></img>
+            </div>
+
+          </div>
+*/

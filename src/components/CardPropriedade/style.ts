@@ -105,6 +105,79 @@ export const Container = styled.div`
         
 
     }
+
+    .modal-container{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal{
+        background: white;
+        border-radius: 30px;
+        width: 50%;
+        height: 50%;
+        padding: 40px;
+        border: 5px solid #4a3cff;
+        position: relative;
+    }
+
+    .modal-container.mostrar{
+        display: flex;
+    }
+
+    .fechar{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 4px solid white;
+        background: white;
+        font-weight: 600;
+        font-size: 1.5rem;
+
+        cursor: pointer;
+    }
+
+    .carrossel{
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+
+        
+        overflow: hidden;
+        box-shadow: 2px 2px 4px black;
+        height: 400px;
+        width: 400px;
+    }
+
+    .img-container{
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        transform: translateX(0);
+    }
+
+    .img{
+        object-fit: cover;
+        height: 400px;
+        width: 400px;
+    }
+
+    .info{
+        display: flex;
+        margin-top: 10px;
+    }
+   }
 `;
 
 

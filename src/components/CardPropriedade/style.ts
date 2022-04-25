@@ -107,77 +107,182 @@ export const Container = styled.div`
     }
 
     .modal-container{
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .modal{
-        background: white;
-        border-radius: 30px;
-        width: 50%;
-        height: 50%;
-        padding: 40px;
-        border: 5px solid #4a3cff;
-        position: relative;
-    }
-
-    .modal-container.mostrar{
-        display: flex;
-    }
-
-    .fechar{
-        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        position: fixed;
         top: 0px;
-        right: 0px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 4px solid white;
-        background: white;
-        font-weight: 600;
-        font-size: 1.5rem;
-
-        cursor: pointer;
-    }
-
-    .carrossel{
-        box-sizing: border-box;
+        left: 0px;
+        z-index: 2000;
         display: flex;
-        align-items: center;
         justify-content: center;
-        margin: 0;
+        align-items: center;
+
+        .modal{
+            padding-bottom: 30px;
+            background: white;
+            border-radius: 30px;
+            width: 900px;
+            overflow-y: auto;
+            
+            height: 90vh;
+            
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img#principal {
+                margin: 20px auto 5px auto;
+                border-radius: 15px;
+                max-width: 65%;
+                height: 320px;
+                display: flex;
+                object-fit: cover;
+            }
+
+            .album{
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                .fotos {
+                    display: grid;
+                    grid-template-columns: repeat(8 ,1fr);
+                    column-gap: 16px;
+                
+                    margin: 16px 40px 0;
+                    button {
+                        border: 0;
+                        height: 88px;
+                        background: none;
+                        cursor: pointer;
+                        border-radius: 20px;
+                        overflow: hidden;
+                        outline: none;
+                        
+                        opacity: 0.6;
+                        img {
+                            width: 100%;
+                            height: 88px;
+                            object-fit: cover;
+                            
+                        }
+                    }
+                    
+                    button.active {
+                        opacity: 1;
+                    }
+                }
+            }
+            h3{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1.8rem;
+
+                color: #0B194A;
+                margin-top: 20px;
+            }
+            p{
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 1rem;
+                width: 80%;
+               
+                text-align: center;
+
+                color: #000000;
+            }
+
+            p#preco{
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 1.8rem;
+                text-align: center;
+
+                color: #7ADC4C;
+            }
+            h4{
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 1rem;
+                color: rgba(0, 0, 0, 0.6);
+            }
+
+            .buttons{
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+                
+                button{
+                    background: #E32A51;
+                    border-radius: 20px;
+                    width: 200px;
+                    padding: 8px 0px;
+
+                    border: none;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    text-align: center;
+
+                    color: #FFFFFF;
+
+                }
+            }
+        }
+
+        .modal-container.mostrar{
+            display: flex;
+        }
+
+        .fechar{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+
+            cursor: pointer;
+        }
+
+        .carrossel{
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+
+            
+            overflow: hidden;
+            box-shadow: 2px 2px 4px black;
+            height: 400px;
+            width: 400px;
+        }
+
+        .img-container{
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(0);
+        }
+
+        .img{
+            object-fit: cover;
+            height: 400px;
+            width: 400px;
+        }
 
         
-        overflow: hidden;
-        box-shadow: 2px 2px 4px black;
-        height: 400px;
-        width: 400px;
     }
-
-    .img-container{
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        transform: translateX(0);
-    }
-
-    .img{
-        object-fit: cover;
-        height: 400px;
-        width: 400px;
-    }
-
-    .info{
-        display: flex;
-        margin-top: 10px;
-    }
-   }
 `;
 
 

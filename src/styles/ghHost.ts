@@ -14,7 +14,7 @@ export const Corpo = styled.div`
     display: flex;
     flex-direction: column;
     .voltar{
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         gap: 10px;
         align-items: center;
@@ -32,4 +32,15 @@ export const Corpo = styled.div`
             margin-top: 6px;
         }
     }
+`;
+
+export const Title = styled.h1`
+    margin-top: 10px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: left;
+
+    color: #0B194A;
 `;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Header from "../../components/Header";
-import {Container, Corpo} from "../../styles/ghHost";
+import {Container, Corpo, Title} from "../../styles/ghHost";
 import { BiArrowToLeft } from "react-icons/bi";
 
 
@@ -9,6 +9,7 @@ const GHHost = () => {
     return (
       <Container>
         <Corpo>
+          
           <div className="voltar">
             <Link href="/perfil"> 
               <a>            
@@ -17,7 +18,12 @@ const GHHost = () => {
             </Link>
             Gerenciamento de hospedagens  Cliente
           </div>
+
+          <Title>Hospedagens que solicitei</Title>
+          <Title>Hospedagens Aceitas</Title>
+
         </Corpo>
+
       </Container>
     );
   };

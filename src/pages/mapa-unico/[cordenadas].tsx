@@ -61,8 +61,8 @@ const Mapa = () => {
   
   separar();*/
 
-  let c1Number = parseInt(c1String);
-  let c2Number = parseInt(c2String);
+  let c1Number = parseFloat(c1String);
+  let c2Number = parseFloat(c2String);
 
   return (
     <Container>
@@ -75,7 +75,7 @@ const Mapa = () => {
           nome={""}  
           latitude = {c1Number}
           longitude = {c2Number} 
-          z={12}
+          z={14}
         />
       </div>
       

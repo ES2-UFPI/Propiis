@@ -190,11 +190,13 @@ const Home: NextPage = () => {
                       key={x._id}
                       title={x.titulo}
                       srcImg={x.fotos[0]}
+                      listImg={x.fotos}
                       price={x.preco_diaria}
                       taxa={x.taxa}
                       description={x.descricao}
                       shower={x.banheiros}
                       bedrooms={x.quartos}
+                      cordinates={x.localizacao.coordinates}
                     />
                   ) )
                   

@@ -122,8 +122,21 @@ export const Container = styled.div`
             padding-bottom: 30px;
             background: white;
             border-radius: 30px;
-            width: 900px;
+            width: 890px;
             overflow-y: auto;
+
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #888; 
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+            }
             
             height: 90vh;
             
@@ -146,10 +159,9 @@ export const Container = styled.div`
                 align-items: center;
                 flex-direction: column;
                 .fotos {
-                    display: grid;
-                    grid-template-columns: repeat(8 ,1fr);
-                    column-gap: 16px;
-                
+                    display: flex;
+                    gap: 15px;
+                    
                     margin: 16px 40px 0;
                     button {
                         border: 0;
@@ -173,6 +185,13 @@ export const Container = styled.div`
                         opacity: 1;
                     }
                 }
+            }
+
+            img#imagem-mapa{
+                cursor: pointer;
+                width: 250px;
+                height: 250px;
+                object-fit: cover;
             }
             h3{
                 font-family: 'Inter';
@@ -212,6 +231,16 @@ export const Container = styled.div`
                 color: rgba(0, 0, 0, 0.6);
             }
 
+            .quant{
+                display: flex;
+                align-items: center;
+
+                margin-top: 10px;
+                #bed{
+                    margin-left: 10px;
+                }
+            }
+
             .buttons{
                 display: flex;
                 gap: 10px;
@@ -231,7 +260,9 @@ export const Container = styled.div`
                     text-align: center;
 
                     color: #FFFFFF;
-
+                }
+                button#interesse{
+                    background: #47568A;
                 }
             }
         }
@@ -243,7 +274,7 @@ export const Container = styled.div`
         .fechar{
             position: absolute;
             top: 0px;
-            right: 0px;
+            right: 10px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -288,4 +319,10 @@ export const Container = styled.div`
 
 
 export const Button = styled.button`
+`;
+
+export const ExtraModal = styled.div`
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px;
 `;

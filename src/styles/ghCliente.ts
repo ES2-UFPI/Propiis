@@ -144,35 +144,6 @@ export const Card = styled.div`
         padding-top: 48px;
         gap: 14px;
     }
-
-    div.valor-total{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        margin-top: 15px;
-        p{
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 29px;
-
-            color: #212529;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            h3{
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 24px;
-
-                color: #33BB48;
-            }
-        }
-        
-    }
 `;
 
 interface BotaoProps{
@@ -196,3 +167,5 @@ export const BotaoCancelar = styled.button<BotaoProps>`
     border: none;
 
 `;
+
+//#E32A51

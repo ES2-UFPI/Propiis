@@ -23,45 +23,43 @@ const GHHost = () => {
 
           <Card>
             <div className="corpo">
-              <div className="coluna-dados">
+              <div className="titulo">
                 <h2>Cidade</h2>
-                <h3>São Paulo</h3>
-                <h3>São Paulo</h3>
-                <h3>São Paulo</h3>
-                <h3>São Paulo</h3>
-                <h3>São Paulo</h3>
-              </div>
-              <div className="coluna-dados">
-                <h2>Chenk-in</h2>
-                <h3>29/05/22</h3>
-                <h3>29/05/22</h3>
-                <h3>29/05/22</h3>
-                <h3>29/05/22</h3>
-                <h3>29/05/22</h3>
-              </div>
-              <div className="coluna-dados">
-                <h2>Chenk-out</h2>
-                <h3>02/06/22</h3>
-                <h3>02/06/22</h3>
-                <h3>02/06/22</h3>
-                <h3>02/06/22</h3>
-                <h3>02/06/22</h3>
-              </div>
-              <div className="coluna-dados">
+                <h2>Chek-in</h2>
+                <h2>Chek-out</h2>
                 <h2>Valor</h2>
-                <h3>R$ 110,00</h3>
-                <h3>R$ 110,00</h3>
-                <h3>R$ 110,00</h3>
-                <h3>R$ 110,00</h3>
-                <h3>R$ 110,00</h3>
+                <h2>Cancelar</h2>
               </div>
-              {/*<div className="coluna-botoes">
-                <BotaoCancelar>Cancelar</BotaoCancelar> 
-                <BotaoCancelar>Cancelar</BotaoCancelar> 
-                <BotaoCancelar>Cancelar</BotaoCancelar> 
-                <BotaoCancelar>Cancelar</BotaoCancelar> 
-                <BotaoCancelar>Cancelar</BotaoCancelar> 
-              </div>*/}
+              <div className="dados">
+                <h3>São Paulo</h3>
+                <h3>29/05/22</h3>
+                <h3>02/06/22</h3>
+                <h3>R$ 110,00</h3>
+                <BotaoCancelar>Cancelar</BotaoCancelar>
+              </div> 
+              <div className="dados">
+                <h3>São Paulo</h3>
+                <h3>29/05/22</h3>
+                <h3>02/06/22</h3>
+                <h3>R$ 110,00</h3>
+                <BotaoCancelar>Cancelar</BotaoCancelar>
+              </div> 
+              <div className="dados">
+                <h3>São Paulo</h3>
+                <h3>29/05/22</h3>
+                <h3>02/06/22</h3>
+                <h3>R$ 110,00</h3>
+                <BotaoCancelar>Cancelar</BotaoCancelar>
+              </div> 
+              <div className="dados">
+                <h3>São Paulo</h3>
+                <h3>29/05/22</h3>
+                <h3>02/06/22</h3>
+                <h3>R$ 110,00</h3>
+                <BotaoCancelar>Cancelar</BotaoCancelar>
+              </div> 
+
+             
             </div>
           </Card>
 

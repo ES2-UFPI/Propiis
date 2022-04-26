@@ -46,7 +46,7 @@ export const Title = styled.h1`
 `;
 
 export const Card = styled.div`
-margin-top: 20px;
+    margin-top: 20px;
     background: #FFFFFF;
     width: 100%;
 
@@ -56,8 +56,11 @@ margin-top: 20px;
     
 
     div.corpo{
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        
+        flex-direction: column;
+        gap: 10px;
         padding-right: 15px;
         height: 150px;
         overflow-y: auto;
@@ -73,6 +76,39 @@ margin-top: 20px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #555; 
+        }
+
+        div.titulo{
+            display: flex;
+            justify-content: space-between;
+            margin-right: 12px;
+
+            h2{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 1rem;
+
+                color: #212529;
+                margin-bottom: 10px;
+            }
+        }
+
+        div.dados{
+            display: flex;
+            justify-content: space-between;
+            margin-right: 0px;
+
+            h3{
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 0.8rem;
+
+                color: #000000;
+            }
+
+            
         }
     }
     div.coluna-dados{
@@ -111,6 +147,7 @@ margin-top: 20px;
 `;
 
 export const BotaoCancelar = styled.button`
+    width: 80px;
     background: #E32A51;
     border-radius: 10px;
     font-family: 'Inter';

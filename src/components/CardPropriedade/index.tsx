@@ -1,30 +1,60 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Container} from "./style";
+import { Container, ExtraModal} from "./style";
 import { MdBedroomParent, MdShower } from 'react-icons/md';
+import dynamic from "next/dynamic";
+import router from "next/router";
 
 interface CardProps  {
   title?: string;
-  srcImg?: string; 
+  srcImg?: string;
+  listImg?: string[]; 
   price?: number;
   taxa?: number;
   description?: string;
   shower?: number;
   bedrooms?: number;
+  cordinates?: number[];
 }
+
+const MapWithNoSSR = dynamic(() => import("../../components/Map"), {
+  ssr: false
+});
+
 
 const CardPropriedade = ({
   title = "",
-  srcImg = "", 
+  srcImg = "",
+  listImg= ["./temporarios/foto_casa.png"], 
   price = 0,
   taxa = 0,
   description = "",
   shower = 0,
   bedrooms = 0,
+  cordinates = [0,0],
   ...rest
 }: CardProps) => {
 
+  const[open,setOpen] = useState(false);
   
+
+
+  var images = [ 
+    './temporarios/foto_casa.png',
+    './temporarios/banheiro1.webp',
+    './temporarios/banheiro_2_1.jpg',
+    './temporarios/cozinha_1.jpg',
+    './temporarios/garagem_1.jpg',
+    './temporarios/quarto_1_1.jpg',
+    './temporarios/quarto_2_1.jpg',
+    './temporarios/sala_1.jpg',
+    
+  ];
+  const [activeImageIndex, setActiveImageIndex] = useState(listImg[0]);
+
+  if(listImg != ["./temporarios/foto_casa.png"]){
+    images = listImg;
+  }
 
   return (
     <Container>
@@ -43,10 +73,78 @@ const CardPropriedade = ({
         </div>
 
         <div className="botoes">
-          <button className="botao1"> +informações</button>
+          <button className="botao1" onClick={() => setOpen(true)}> +informações</button>
           <button >tenho interesse</button>
         </div>
       </div>
+
+
+
+      {open?
+        <div id="modal-info" className="modal-container">
+          <ExtraModal>
+            <div className="modal">
+              <button className="fechar" onClick={() => setOpen(false)}>x</button>
+              
+              <img src={activeImageIndex} id='principal' />
+
+              <div className='album'>
+                <div className="fotos">
+                      {images.map((index) =>{
+                        return (
+                          <button
+                            className={activeImageIndex == index ? 'active' : ''}
+                            type="button"
+                            onClick={() => {
+                              setActiveImageIndex(index);
+                            }}
+                            >
+                            <img src={index}/>
+                          </button>
+                        );
+                      })}
+                  </div>
+              </div>
+
+              <h3 >Descrição:</h3>
+              <p>
+                {
+                  description == "" ? 
+                  "Casa recem formada, jardim impecável, garagens e vizinhança ótima."
+                  : description
+                }
+              </p>
+              <h1>{title}</h1>
+              <div className="quant">
+                <MdShower size={24} color="black"/>
+                {shower}
+                <MdBedroomParent size={24} color="black" id="bed" />
+                {bedrooms}
+              </div>
+
+              <h3>Localização:</h3>
+              
+              <img 
+                src="./images/imagem-mapa.jpeg" 
+                alt="mapa" 
+                id="imagem-mapa"
+                onClick={ () => router.push(`/mapa-unico/${cordinates[0]}@${cordinates[1]}`)}
+              />
+
+              <h3 >Valor Diária:</h3>
+              <p id="preco">R${price == 0 ? " 100": " " +price }</p>
+              <h4>{taxa == 0 ? "+ R$ 25" : "+ R$ "+ taxa * price} de taxa de manutenção</h4>
+              
+             
+
+              <div className="buttons">
+                <button onClick={() => setOpen(false)}>Voltar</button>
+                <button id="interesse">Tenho Interesse</button>
+              </div>
+            </div>
+          </ExtraModal>
+        </div>
+      :null}
     </Container>
   );
 };

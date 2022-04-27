@@ -23,7 +23,7 @@ const Map = ({
     const [ tam, setTam ]= useState(z);
 
     const mapIcon = Leaflet.icon({
-        iconUrl: "./icons/pin.svg",
+        iconUrl: "/icons/pin.svg",
 
         iconSize: [50,50],
         iconAnchor: [25,50],

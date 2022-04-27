@@ -10,14 +10,16 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Router, { useRouter } from "next/router";
 import router from "next/router";
 
+const MapWithNoSSR = dynamic(() => import("./Map"), {
+  ssr: false
+});
+
 const Mapa = () => {
   const [ mapa, setMapa ] = useState([]);
   const [value, setValue] = useState("");
   const [cidade, setCidade] = useState("");
 
-  const MapWithNoSSR = dynamic(() => import("./Map"), {
-    ssr: false
-  });
+  
 
   var dataCity = [];
 

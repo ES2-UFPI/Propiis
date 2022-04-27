@@ -4,7 +4,7 @@ import { Container, ExtraModal} from "./style";
 import { MdBedroomParent, MdShower } from 'react-icons/md';
 import dynamic from "next/dynamic";
 import router from "next/router";
-
+import {IoMdReturnLeft} from "react-icons/io";
 interface CardProps  {
   title?: string;
   srcImg?: string;
@@ -17,7 +17,7 @@ interface CardProps  {
   cordinates?: number[];
 }
 
-const MapWithNoSSR = dynamic(() => import("../../components/Map"), {
+const MapWithNoSSR = dynamic(() => import("../../components/Map2"), {
   ssr: false
 });
 
@@ -36,6 +36,7 @@ const CardPropriedade = ({
 }: CardProps) => {
 
   const[open,setOpen] = useState(false);
+  const[openMap, setOpenMap] = useState(false);
   
 
 
@@ -80,70 +81,91 @@ const CardPropriedade = ({
 
 
 
-      {open?
+      {open?(
         <div id="modal-info" className="modal-container">
           <ExtraModal>
             <div className="modal">
-              <button className="fechar" onClick={() => setOpen(false)}>x</button>
-              
-              <img src={activeImageIndex} id='principal' />
-
-              <div className='album'>
-                <div className="fotos">
-                      {images.map((index) =>{
-                        return (
-                          <button
-                            className={activeImageIndex == index ? 'active' : ''}
-                            type="button"
-                            onClick={() => {
-                              setActiveImageIndex(index);
-                            }}
-                            >
-                            <img src={index}/>
-                          </button>
-                        );
-                      })}
-                  </div>
-              </div>
-
-              <h3 >Descrição:</h3>
-              <p>
-                {
-                  description == "" ? 
-                  "Casa recem formada, jardim impecável, garagens e vizinhança ótima."
-                  : description
+              <button 
+                className="fechar" 
+                onClick={openMap ? ()=> setOpenMap(false) : () => setOpen(false)}
+              >
+                {openMap ? 
+                  <IoMdReturnLeft size={30}/>
+                : "x"
                 }
-              </p>
-              <h1>{title}</h1>
-              <div className="quant">
-                <MdShower size={24} color="black"/>
-                {shower}
-                <MdBedroomParent size={24} color="black" id="bed" />
-                {bedrooms}
-              </div>
-
-              <h3>Localização:</h3>
+              </button>
               
-              <img 
-                src="./images/imagem-mapa.jpeg" 
-                alt="mapa" 
-                id="imagem-mapa"
-                onClick={ () => router.push(`/mapa-unico/${cordinates[0]}@${cordinates[1]}`)}
-              />
+              {!openMap ? 
+                <>
+                <img src={activeImageIndex} id='principal' />
 
-              <h3 >Valor Diária:</h3>
-              <p id="preco">R${price == 0 ? " 100": " " +price }</p>
-              <h4>{taxa == 0 ? "+ R$ 25" : "+ R$ "+ taxa * price} de taxa de manutenção</h4>
+                <div className='album'>
+                  <div className="fotos">
+                        {images.map((index) =>{
+                          return (
+                            <button
+                              className={activeImageIndex == index ? 'active' : ''}
+                              type="button"
+                              onClick={() => {
+                                setActiveImageIndex(index);
+                              }}
+                              >
+                              <img src={index}/>
+                            </button>
+                          );
+                        })}
+                    </div>
+                </div>
+
+                <h3 >Descrição:</h3>
+                <p>
+                  {
+                    description == "" ? 
+                    "Casa recem formada, jardim impecável, garagens e vizinhança ótima."
+                    : description
+                  }
+                </p>
+                <h1>{title}</h1>
+                <div className="quant">
+                  <MdShower size={24} color="black"/>
+                  {shower}
+                  <MdBedroomParent size={24} color="black" id="bed" />
+                  {bedrooms}
+                </div>
+
+                <h3>Localização:</h3>
+                
+                <img 
+                  src="./images/imagem-mapa.jpeg" 
+                  alt="mapa" 
+                  id="imagem-mapa"
+                  onClick={ () => setOpenMap(true)}
+                />
+
+                <h3 >Valor Diária:</h3>
+                <p id="preco">R${price == 0 ? " 100": " " +price }</p>
+                <h4>{taxa == 0 ? "+ R$ 25" : "+ R$ "+ taxa * price} de taxa de manutenção</h4>
+                
               
-             
 
-              <div className="buttons">
-                <button onClick={() => setOpen(false)}>Voltar</button>
-                <button id="interesse">Tenho Interesse</button>
-              </div>
+                <div className="buttons">
+                  <button onClick={() => setOpen(false)}>Voltar</button>
+                  <button id="interesse">Tenho Interesse</button>
+                </div>
+                </>
+              : 
+                <div className="mapa">
+                  <MapWithNoSSR 
+                  nome={""}  
+                  latitude = {cordinates[0]}
+                  longitude = {cordinates[1]} 
+                  z={14}
+                  />
+                </div>
+              }
             </div>
           </ExtraModal>
-        </div>
+        </div>)
       :null}
     </Container>
   );

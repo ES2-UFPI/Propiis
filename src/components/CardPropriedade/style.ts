@@ -122,8 +122,23 @@ export const Container = styled.div`
             padding-bottom: 30px;
             background: white;
             border-radius: 30px;
-            width: 900px;
+
+            width: 890px;
             overflow-y: auto;
+
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #888; 
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+            }
+
             
             height: 90vh;
             
@@ -146,10 +161,11 @@ export const Container = styled.div`
                 align-items: center;
                 flex-direction: column;
                 .fotos {
-                    display: grid;
-                    grid-template-columns: repeat(8 ,1fr);
-                    column-gap: 16px;
-                
+
+                    display: flex;
+                    gap: 15px;
+                    
+
                     margin: 16px 40px 0;
                     button {
                         border: 0;
@@ -174,6 +190,15 @@ export const Container = styled.div`
                     }
                 }
             }
+
+
+            img#imagem-mapa{
+                cursor: pointer;
+                width: 250px;
+                height: 250px;
+                object-fit: cover;
+            }
+
             h3{
                 font-family: 'Inter';
                 font-style: normal;
@@ -212,6 +237,18 @@ export const Container = styled.div`
                 color: rgba(0, 0, 0, 0.6);
             }
 
+
+            .quant{
+                display: flex;
+                align-items: center;
+
+                margin-top: 10px;
+                #bed{
+                    margin-left: 10px;
+                }
+            }
+
+
             .buttons{
                 display: flex;
                 gap: 10px;
@@ -233,6 +270,58 @@ export const Container = styled.div`
                     color: #FFFFFF;
 
                 }
+                button#interesse{
+                    background: #47568A;
+                }
+            }
+
+            .mapa{
+                margin-top: 40px;
+                z-index: 1;
+                width: 90%;
+                height: 95%;
+                border-radius: 20px;
+
+                .popup-marker{
+                    .leaflet-popup-content-wrapper{
+                        background: rgba(255, 255, 255, 0.9);
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                        border-radius: 20px;
+                    }
+
+                    .leaflet-popup-content {
+                        color:#60696B;
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin: 8px 12px;
+
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        a {
+                            width: 35px;
+                            height: 35px;
+                            background: #15c3d6;
+                            border-radius: 12px;
+
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                            img {
+                                width: 22px;
+                                height: 22px;
+                            }
+                        }
+                    }
+
+                    .leaflet-popup-tip-container {
+                        display: none;
+                    }
+
+                }
             }
         }
 
@@ -243,7 +332,9 @@ export const Container = styled.div`
         .fechar{
             position: absolute;
             top: 0px;
-            right: 0px;
+
+            right: 10px;
+
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -288,4 +379,12 @@ export const Container = styled.div`
 
 
 export const Button = styled.button`
+`;
+
+export const ExtraModal = styled.div`
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px;
+
+    
 `;

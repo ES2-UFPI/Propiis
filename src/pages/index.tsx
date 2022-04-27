@@ -83,16 +83,13 @@ const Home: NextPage = () => {
   async function handleSubmit(){
     const api = setupApi();
     try{
-      const result = await api.get(`propriedades/${localizacao}`);
+      const result = await api.get(`propriedades/cidade?cidade=${localizacao}&inicio=2022-05-13&fim=2022-05-18`);
       setPropriedades(result.data.propriedades);
       console.log(propriedades);
       setIsFound(true);
     }catch (e) {
       console.log(e);
     }
-    
-
-    
     
   }
 
@@ -190,11 +187,13 @@ const Home: NextPage = () => {
                       key={x._id}
                       title={x.titulo}
                       srcImg={x.fotos[0]}
+                      listImg={x.fotos}
                       price={x.preco_diaria}
                       taxa={x.taxa}
                       description={x.descricao}
                       shower={x.banheiros}
                       bedrooms={x.quartos}
+                      cordinates={x.localizacao.coordinates}
                     />
                   ) )
                   

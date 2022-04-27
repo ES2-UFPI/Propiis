@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, Geral } from "./style";
 
 const Header = () => {
-  const [logado, setLogado] = useState(false);
+  const [logado, setLogado] = useState(true);
   const [openOp, setOpenOp] = useState(false);
 
   return (
@@ -43,7 +43,7 @@ const Header = () => {
       {openOp ?
         <ul className="opcoes">
           <li><a href="/perfil">Meu perfil</a></li>
-          <li>Propriedades</li>
+          <li><a href="/gh-cliente">Propriedades</a></li>
           <li>Favoritos</li>
           <li id="sair">Sair</li>
         </ul>

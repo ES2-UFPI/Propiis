@@ -122,6 +122,7 @@ export const Container = styled.div`
             padding-bottom: 30px;
             background: white;
             border-radius: 30px;
+
             width: 890px;
             overflow-y: auto;
 
@@ -137,6 +138,7 @@ export const Container = styled.div`
             ::-webkit-scrollbar-thumb:hover {
                 background: #555; 
             }
+
             
             height: 90vh;
             
@@ -159,9 +161,11 @@ export const Container = styled.div`
                 align-items: center;
                 flex-direction: column;
                 .fotos {
+
                     display: flex;
                     gap: 15px;
                     
+
                     margin: 16px 40px 0;
                     button {
                         border: 0;
@@ -187,12 +191,14 @@ export const Container = styled.div`
                 }
             }
 
+
             img#imagem-mapa{
                 cursor: pointer;
                 width: 250px;
                 height: 250px;
                 object-fit: cover;
             }
+
             h3{
                 font-family: 'Inter';
                 font-style: normal;
@@ -231,6 +237,7 @@ export const Container = styled.div`
                 color: rgba(0, 0, 0, 0.6);
             }
 
+
             .quant{
                 display: flex;
                 align-items: center;
@@ -240,6 +247,7 @@ export const Container = styled.div`
                     margin-left: 10px;
                 }
             }
+
 
             .buttons{
                 display: flex;
@@ -260,6 +268,7 @@ export const Container = styled.div`
                     text-align: center;
 
                     color: #FFFFFF;
+
                 }
                 button#interesse{
                     background: #47568A;
@@ -311,6 +320,7 @@ export const Container = styled.div`
                     .leaflet-popup-tip-container {
                         display: none;
                     }
+
                 }
             }
         }
@@ -322,7 +332,9 @@ export const Container = styled.div`
         .fechar{
             position: absolute;
             top: 0px;
+
             right: 10px;
+
             width: 50px;
             height: 50px;
             border-radius: 50%;

@@ -17,9 +17,11 @@ interface CardProps  {
   cordinates?: number[];
 }
 
+
 const MapWithNoSSR = dynamic(() => import("../../components/Map2"), {
   ssr: false
 });
+
 
 
 const CardPropriedade = ({
@@ -36,7 +38,9 @@ const CardPropriedade = ({
 }: CardProps) => {
 
   const[open,setOpen] = useState(false);
+
   const[openMap, setOpenMap] = useState(false);
+
   
 
 
@@ -51,11 +55,13 @@ const CardPropriedade = ({
     './temporarios/sala_1.jpg',
     
   ];
+
   const [activeImageIndex, setActiveImageIndex] = useState(listImg[0]);
 
   if(listImg != ["./temporarios/foto_casa.png"]){
     images = listImg;
   }
+
 
   return (
     <Container>
@@ -75,11 +81,10 @@ const CardPropriedade = ({
 
         <div className="botoes">
           <button className="botao1" onClick={() => setOpen(true)}> +informações</button>
+
           <button >tenho interesse</button>
         </div>
       </div>
-
-
 
       {open?(
         <div id="modal-info" className="modal-container">
@@ -166,9 +171,14 @@ const CardPropriedade = ({
             </div>
           </ExtraModal>
         </div>)
+
       :null}
     </Container>
   );
+
+
 };
 
 export default CardPropriedade;
+
+

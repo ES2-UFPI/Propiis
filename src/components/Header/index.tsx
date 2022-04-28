@@ -43,7 +43,8 @@ const Header = () => {
       {openOp ?
         <ul className="opcoes">
           <li><a href="/perfil">Meu perfil</a></li>
-          <li><a href="/gh-cliente">Propriedades</a></li>
+          <li><a href="/gh-cliente">Minhas Hospedagens</a></li>
+          <li><a href="/gh-host">Minhas Propriedades</a></li>
           <li>Favoritos</li>
           <li id="sair">Sair</li>
         </ul>

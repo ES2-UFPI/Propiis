@@ -1,17 +1,19 @@
 import Header from "../../components/Header";
 import {Container, Corpo, Corpo2, Card, CardButtons, Input} from "../../styles/pagamento";
 import { CgPushLeft } from 'react-icons/cg';
-import router from "next/router";
+import { useRouter } from "next/router";
 import { setupApi } from "../../services/api";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const { id } = router.query;
+
 
 let minhasSolicitacao;
 const Pagamento = () => {
-
+  const router = useRouter();
   const [isFound2, setIsFound2] = useState(false);
-
+  const { id } = router.query;
+  
   async function infoSolicitacao(){
     const api = setupApi();
     try{
@@ -28,6 +30,7 @@ const Pagamento = () => {
   }
 
   useEffect(() => {
+    
     infoSolicitacao();
    },[])
 

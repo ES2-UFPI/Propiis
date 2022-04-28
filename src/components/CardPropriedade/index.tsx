@@ -5,6 +5,7 @@ import { MdBedroomParent, MdShower } from 'react-icons/md';
 import dynamic from "next/dynamic";
 import router from "next/router";
 import {IoMdReturnLeft} from "react-icons/io";
+import { setupApi } from "../../services/api";
 interface CardProps  {
   title?: string;
   srcImg?: string;
@@ -15,6 +16,8 @@ interface CardProps  {
   shower?: number;
   bedrooms?: number;
   cordinates?: number[];
+  myId?: string;
+  localizacao?: string;
 }
 
 
@@ -34,6 +37,8 @@ const CardPropriedade = ({
   shower = 0,
   bedrooms = 0,
   cordinates = [0,0],
+  localizacao= "",
+  myId= "",
   ...rest
 }: CardProps) => {
 
@@ -62,6 +67,47 @@ const CardPropriedade = ({
     images = listImg;
   }
 
+  async function prestarSolicitacao(){
+    const api = setupApi();
+    try{
+      const result = await api.post(`/solicitacoes/solicitar`,
+        {
+          "user": {
+            "nome": "Marcos",
+            "telefone": "11111111111",
+            "imagem_perfil": "",
+            "id": "6269e837fc62aa367a36bbad"
+          },
+          "user_host": {
+            "nome": "Tiago",
+            "telefone": "77777777777",
+            "imagem_perfil": "",
+            "id": "6269e853fc62aa367a36bbaf"
+          },
+          "propriedade": {
+            "titulo": title,
+            "fotos": [""],
+            "localizacao": {
+              "endereco": "", 
+              "cidade": localizacao, 
+              "estado": ""
+            },
+            "id": myId
+          },
+          "periodo": {
+            "inicio": "2022-05-05",
+            "fim": "2022-06-27"
+          },
+          "valor_total": 5000
+        }
+      );
+      alert("proposta realizada com sucesso\ncheque o status da proposta na pagina de\n minhas hospedagens");
+      setOpen(false)
+    }catch (e) {
+      console.log(e);
+    }
+    
+  }
 
   return (
     <Container>
@@ -82,7 +128,7 @@ const CardPropriedade = ({
         <div className="botoes">
           <button className="botao1" onClick={() => setOpen(true)}> +informações</button>
 
-          <button >tenho interesse</button>
+          <button  onClick={() => prestarSolicitacao()}>tenho interesse</button>
         </div>
       </div>
 
@@ -155,7 +201,11 @@ const CardPropriedade = ({
 
                 <div className="buttons">
                   <button onClick={() => setOpen(false)}>Voltar</button>
-                  <button id="interesse">Tenho Interesse</button>
+                  <button 
+                  id="interesse"
+                  onClick={() => prestarSolicitacao()}
+                  >
+                    Tenho Interesse</button>
                 </div>
                 </>
               : 

@@ -10,7 +10,7 @@ const Header = () => {
     <Geral>
       <Container>
         <Link href="/">
-          <img src="./icons/logo.svg" alt="logo" id="logo"/>
+          <img src="/icons/logo.svg" alt="logo" id="logo"/>
         </Link>
         
         <Link href="/">
@@ -25,8 +25,8 @@ const Header = () => {
           <div className="border-image">
             <img 
               src={logado == false? 
-                "./icons/sem-perfil.svg" : 
-                "./icons/logado.svg"
+                "/icons/sem-perfil.svg" : 
+                "/icons/logado.svg"
                 } 
               alt="perfil"
             />
@@ -43,7 +43,8 @@ const Header = () => {
       {openOp ?
         <ul className="opcoes">
           <li><a href="/perfil">Meu perfil</a></li>
-          <li><a href="/gh-cliente">Propriedades</a></li>
+          <li><a href="/gh-cliente">Minhas Hospedagens</a></li>
+          <li><a href="/gh-host">Minhas Propriedades</a></li>
           <li>Favoritos</li>
           <li id="sair">Sair</li>
         </ul>

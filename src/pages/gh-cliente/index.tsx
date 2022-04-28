@@ -92,16 +92,6 @@ const GHCliente = () => {
                 <h2>Cancelar</h2>
               </div>
 
-              {minhasSolicitacoes.map( x => {(
-                <div className="dados">
-                  <h3>São Paulo</h3>
-                  <h3>29/05/22</h3>
-                  <h3>02/06/22</h3>
-                  <h3>R$ 110,00</h3>
-                  <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
-                </div> 
-              )})}
-
               {isFound ?  
                 <>
                   

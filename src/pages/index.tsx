@@ -236,7 +236,6 @@ const Home: NextPage = () => {
           </Sugestoes>
 
       </Corpo>
-      <button onClick={()=> console.log(diferenca)}>Console</button>
       <Footer></Footer>
     </Container>
 

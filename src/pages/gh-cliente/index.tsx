@@ -2,9 +2,70 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import {BotaoCancelar, Card, Container, Corpo, Title} from "../../styles/ghCliente";
 import { BiArrowToLeft } from "react-icons/bi";
+import { setupApi } from "../../services/api";
+import { useEffect, useState } from "react";
+
+interface SolicitacoesProps{
+  user: {
+    nome: string,
+    telefone: string,
+    imagem_perfil: string,
+    id: string
+  },
+  user_host: {
+    nome: string,
+    telefone: string,
+    imagem_perfil: string,
+    id: string
+  },
+  propriedade: {
+    localizacao: {
+      endereco: string,
+      cidade: string,
+      estado: string
+    },
+    titulo: string,
+    fotos: Array<string>,
+    id: string
+  },
+  periodo: {
+    inicio: string,
+    fim: string
+  },
+  _id: string,
+  status: string,
+  valor_total: number,
+  pago: boolean,
+  __v: number
+}
 
 
+let minhasSolicitacoes = [];
 const GHCliente = () => {
+
+  const [solicitacoes, setSolicitacoes] = useState<any>([]);
+  const [isFound, setIsFound] = useState(false);
+ 
+  
+  async function loadData(){
+    const api = setupApi();
+    try{
+      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Pendente`);
+      
+      //setSolicitacoes(result.data.solicitacoes);
+      minhasSolicitacoes = result.data.solicitacoes;
+      console.log(minhasSolicitacoes);
+      setIsFound(true);
+    }catch (e) {
+      console.log(e);
+    }
+    
+  }
+  
+  useEffect(() => {
+    loadData();
+    
+   },[])
 
     return (
       <Container>
@@ -30,7 +91,78 @@ const GHCliente = () => {
                 <h2>Valor</h2>
                 <h2>Cancelar</h2>
               </div>
-              <div className="dados">
+
+              {minhasSolicitacoes.map( x => {(
+                <div className="dados">
+                  <h3>São Paulo</h3>
+                  <h3>29/05/22</h3>
+                  <h3>02/06/22</h3>
+                  <h3>R$ 110,00</h3>
+                  <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                </div> 
+              )})}
+
+              {isFound ?  
+                <>
+                  
+                  {
+                    minhasSolicitacoes.map(x => (
+                      <div className="dados" key={x._id}>
+                        <h3>{x.propriedade.localizacao.cidade}</h3>
+                        <h3>
+                          {  
+                            x.periodo.inicio[8] + "" + 
+                            x.periodo.inicio[9] + "/" +
+                            x.periodo.inicio[5] + "" +
+                            x.periodo.inicio[6] + "/" +
+                            x.periodo.inicio[0] + "" +
+                            x.periodo.inicio[1] + "" +
+                            x.periodo.inicio[2] + "" +
+                            x.periodo.inicio[3] + ""
+                          }
+                        </h3>
+                        <h3>
+                          {  
+                            x.periodo.fim[8] + "" + 
+                            x.periodo.fim[9] + "/" +
+                            x.periodo.fim[5] + "" +
+                            x.periodo.fim[6] + "/" +
+                            x.periodo.fim[0] + "" +
+                            x.periodo.fim[1] + "" +
+                            x.periodo.fim[2] + "" +
+                            x.periodo.fim[3] + ""
+                          }</h3>
+                        <h3>R$ {x.valor_total}</h3>
+                        <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                      </div> 
+                    ) )
+                    
+                  }
+
+                </>
+                :
+                <>
+                  <div className="dados" >
+                      <h3>São Francisco</h3>
+                      <h3>29/05/22</h3>
+                      <h3>02/06/22</h3>
+                      <h3>R$ 110,00</h3>
+                      <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                    </div> 
+
+                    <div className="dados">
+                      <h3>São Francisco</h3>
+                      <h3>29/05/22</h3>
+                      <h3>02/06/22</h3>
+                      <h3>R$ 110,00</h3>
+                      <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                    </div> 
+                </>
+              }
+
+
+              
+              {/*<div className="dados">
                 <h3>São Paulo</h3>
                 <h3>29/05/22</h3>
                 <h3>02/06/22</h3>
@@ -57,7 +189,7 @@ const GHCliente = () => {
                 <h3>02/06/22</h3>
                 <h3>R$ 110,00</h3>
                 <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
-              </div> 
+            </div>*/} 
 
              
             </div>

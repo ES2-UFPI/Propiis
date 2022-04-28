@@ -185,6 +185,7 @@ const Home: NextPage = () => {
                     
                     <CardPropriedade 
                       key={x._id}
+                      myId={x._id}
                       title={x.titulo}
                       srcImg={x.fotos[0]}
                       listImg={x.fotos}
@@ -194,6 +195,7 @@ const Home: NextPage = () => {
                       shower={x.banheiros}
                       bedrooms={x.quartos}
                       cordinates={x.localizacao.coordinates}
+                      localizacao={x.localizacao.cidade}
                     />
                   ) )
                   

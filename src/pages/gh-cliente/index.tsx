@@ -254,7 +254,7 @@ const GHCliente = () => {
                           </BotaoCancelar>
                        
                         }
-                        <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                        <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
                       </div> 
                     ) )
                     

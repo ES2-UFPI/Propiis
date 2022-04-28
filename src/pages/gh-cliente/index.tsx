@@ -4,6 +4,7 @@ import {BotaoCancelar, Card, Container, Corpo, Title} from "../../styles/ghClien
 import { BiArrowToLeft } from "react-icons/bi";
 import { setupApi } from "../../services/api";
 import { useEffect, useState } from "react";
+import router, { Router } from "next/router";
 
 interface SolicitacoesProps{
   user: {
@@ -249,7 +250,10 @@ const GHCliente = () => {
                         {x.pago == true ?
                           <BotaoCancelar background="#33BB48">Pago</BotaoCancelar> 
                           : 
-                          <BotaoCancelar background="#47568A">
+                          <BotaoCancelar 
+                            background="#47568A"
+                            onClick={ ()=> router.push(`/pagamento/${x._id}`)}
+                            >
                             Pagar
                           </BotaoCancelar>
                        

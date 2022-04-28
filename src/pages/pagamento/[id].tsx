@@ -2,9 +2,52 @@ import Header from "../../components/Header";
 import {Container, Corpo, Corpo2, Card, CardButtons, Input} from "../../styles/pagamento";
 import { CgPushLeft } from 'react-icons/cg';
 import router from "next/router";
+import { setupApi } from "../../services/api";
+import { useEffect, useState } from "react";
 
+const { id } = router.query;
+
+let minhasSolicitacao;
 const Pagamento = () => {
 
+  const [isFound2, setIsFound2] = useState(false);
+
+  async function infoSolicitacao(){
+    const api = setupApi();
+    try{
+      const result = await api.get(`/solicitacoes/${id}`);
+      
+      //setSolicitacoes(result.data.solicitacoes);
+      minhasSolicitacao = result.data.solicitacao;
+      console.log(minhasSolicitacao);
+      setIsFound2(true);
+    }catch (e) {
+      console.log(e);
+    }
+    
+  }
+
+  useEffect(() => {
+    infoSolicitacao();
+   },[])
+
+
+  async function pagar(){
+    const api = setupApi();
+    try{
+      const result = await api.put(`/solicitacoes/pagamento/${id}`,{ "pago": true});
+      
+      alert("pago com sucesso! \nRetornando você para pagina de gerenciamento");
+      router.push("/gh-cliente");
+      setIsFound2(true);
+    }catch (e) {
+      console.log(e);
+    
+    }
+  
+  }
+
+  
     return (
       <Container>
         <Corpo>
@@ -19,10 +62,10 @@ const Pagamento = () => {
           <Card>
             <h1>Informação da viagem</h1>
             <div className="viagem">
-              <img src="/images/fotocasa.svg" alt="imagem"/>
+              <img src={minhasSolicitacao?.propriedade?.fotos[0]} alt="imagem"/>
               <div className="text">
-                <p>Cidade: <h3>São Paulo</h3></p>
-                <p>Titulo: <h3>Mansão em nitriesk</h3></p>
+                <p>Cidade: <h3>{minhasSolicitacao?.propriedade?.localizacao?.cidade}</h3></p>
+                <p>Titulo: <h3>{minhasSolicitacao?.propriedade?.titulo}</h3></p>
               </div>
             </div>
           </Card>
@@ -30,10 +73,9 @@ const Pagamento = () => {
           <Card tam="300px">
             <h1>Informação de Preço</h1>
             <div className="texto-precos">
-              <p>Xdiarias: <h3>R$150,00</h3></p>
-              <p>XTaxa: <h3>R$50,00</h3></p>
+              <p>valor Geral: <h3>R$ {minhasSolicitacao?.valor_total}</h3></p>
               <hr/>
-              <p>Total: <h3>R$500,00</h3></p>
+              <p>Total: <h3>R$ {minhasSolicitacao?.valor_total}</h3></p>
             </div>
           </Card>
           
@@ -88,11 +130,14 @@ const Pagamento = () => {
           </div>
 
           <div className="buttons">
-            <button>
+            <button onClick={()=> router.push(`/gh-cliente`)}>
               Voltar
             </button>
-            <button className="blue">
-              Enviar
+            <button 
+              className="blue"
+              onClick={ ()=> pagar()}
+            >
+              Pagar
             </button>
           </div>
 

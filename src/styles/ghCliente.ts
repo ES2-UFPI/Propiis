@@ -84,6 +84,7 @@ export const Card = styled.div`
             margin-right: 12px;
 
             h2{
+                width: 100px;
                 font-family: 'Inter';
                 font-style: normal;
                 font-weight: 600;
@@ -100,6 +101,8 @@ export const Card = styled.div`
             margin-right: 0px;
 
             h3{
+                width: 100px;
+                
                 font-family: 'Manrope';
                 font-style: normal;
                 font-weight: 400;
@@ -153,6 +156,7 @@ interface BotaoProps{
 
 export const BotaoCancelar = styled.button<BotaoProps>`
     width: 80px;
+    margin: 0px 30px 0px 0px;
     background: ${(props)=>props.background};
     border-radius: 10px;
     font-family: 'Inter';

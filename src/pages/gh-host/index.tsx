@@ -44,7 +44,7 @@ const GHHost = () => {
             Gerenciamento de hospedagens Host
           </div>
 
-          <Title>Hospedagens que solicitei</Title>
+          <Title>Hospedagens solicitadas</Title>
 
           <Card>
             <div className="corpo">

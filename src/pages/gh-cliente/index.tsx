@@ -41,10 +41,12 @@ interface SolicitacoesProps{
 
 
 let minhasSolicitacoes = [];
+let hospedagensAceitas = [];
 const GHCliente = () => {
 
   const [solicitacoes, setSolicitacoes] = useState<any>([]);
   const [isFound, setIsFound] = useState(false);
+  const [isFound2, setIsFound2] = useState(false);
  
   
   async function loadData(){
@@ -61,10 +63,25 @@ const GHCliente = () => {
     }
     
   }
+
+  async function loadHospedagensAceitas(){
+    const api = setupApi();
+    try{
+      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Aceita`);
+      
+      //setSolicitacoes(result.data.solicitacoes);
+      hospedagensAceitas = result.data.solicitacoes;
+      console.log(hospedagensAceitas);
+      setIsFound2(true);
+    }catch (e) {
+      console.log(e);
+    }
+    
+  }
   
   useEffect(() => {
     loadData();
-    
+    loadHospedagensAceitas();
    },[])
 
     return (
@@ -191,45 +208,82 @@ const GHCliente = () => {
             <div className="corpo">
               <div className="titulo">
                 <h2>Cidade</h2>
-                <h2>Chek-in</h2>
-                <h2>Chek-out</h2>
+                <h2>Check-in</h2>
+                <h2>Check-out</h2>
                 <h2>Valor</h2>
                 <h2>Pagamento</h2>
                 <h2>Conversar</h2>
               </div>
-              <div className="dados">
-                <h3>São Paulo</h3>
-                <h3>29/05/22</h3>
-                <h3>02/06/22</h3>
-                <h3>R$ 110,00</h3>
-                <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
-                <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-              </div> 
-              <div className="dados">
-                <h3>São Paulo</h3>
-                <h3>29/05/22</h3>
-                <h3>02/06/22</h3>
-                <h3>R$ 110,00</h3>
-                <BotaoCancelar background="#47568A">Pagar</BotaoCancelar>
-                <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-              </div> 
-              <div className="dados">
-                <h3>São Paulo</h3>
-                <h3>29/05/22</h3>
-                <h3>02/06/22</h3>
-                <h3>R$ 110,00</h3>
-                <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
-                <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-              </div> 
-              <div className="dados">
-                <h3>São Paulo</h3>
-                <h3>29/05/22</h3>
-                <h3>02/06/22</h3>
-                <h3>R$ 110,00</h3>
-                <BotaoCancelar background="#47568A">Pagar</BotaoCancelar>
-                <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-              </div> 
 
+              {isFound2 ?  
+                <>
+                  
+                  {
+                    hospedagensAceitas.map(x => (
+                      <div className="dados" key={x._id}>
+                        <h3>{x.propriedade.localizacao.cidade}</h3>
+                        <h3>
+                          {  
+                            x.periodo.inicio[8] + "" + 
+                            x.periodo.inicio[9] + "/" +
+                            x.periodo.inicio[5] + "" +
+                            x.periodo.inicio[6] + "/" +
+                            x.periodo.inicio[0] + "" +
+                            x.periodo.inicio[1] + "" +
+                            x.periodo.inicio[2] + "" +
+                            x.periodo.inicio[3] + ""
+                          }
+                        </h3>
+                        <h3>
+                          {  
+                            x.periodo.fim[8] + "" + 
+                            x.periodo.fim[9] + "/" +
+                            x.periodo.fim[5] + "" +
+                            x.periodo.fim[6] + "/" +
+                            x.periodo.fim[0] + "" +
+                            x.periodo.fim[1] + "" +
+                            x.periodo.fim[2] + "" +
+                            x.periodo.fim[3] + ""
+                          }</h3>
+                        <h3>R$ {x.valor_total}</h3>
+                        {x.pago == true ?
+                          <BotaoCancelar background="#33BB48">Pago</BotaoCancelar> 
+                          : 
+                          <BotaoCancelar background="#47568A">
+                            Pagar
+                          </BotaoCancelar>
+                       
+                        }
+                        <BotaoCancelar background="#E32A51">Cancelar</BotaoCancelar>
+                      </div> 
+                    ) )
+                    
+                  }
+
+                </>
+                :
+                <>
+                  <div className="dados">
+                    <h3>São Paulo</h3>
+                    <h3>29/05/22</h3>
+                    <h3>02/06/22</h3>
+                    <h3>R$ 110,00</h3>
+                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
+                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
+                  </div> 
+
+                  <div className="dados">
+                    <h3>São Paulo</h3>
+                    <h3>29/05/22</h3>
+                    <h3>02/06/22</h3>
+                    <h3>R$ 110,00</h3>
+                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
+                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
+                  </div> 
+                </>
+              }
+
+              
              
             </div>
           </Card>

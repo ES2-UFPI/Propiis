@@ -86,7 +86,7 @@ const CardPropriedade = ({
           },
           "propriedade": {
             "titulo": title,
-            "fotos": [""],
+            "fotos": listImg,
             "localizacao": {
               "endereco": "", 
               "cidade": localizacao, 

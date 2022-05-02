@@ -4,7 +4,7 @@ import {BotaoCancelar, Card, Container, Corpo, Title} from "../../styles/ghClien
 import { BiArrowToLeft } from "react-icons/bi";
 import { setupApi } from "../../services/api";
 import { useEffect, useState } from "react";
-import router, { Router } from "next/router";
+import router, { Router, useRouter } from "next/router";
 
 interface SolicitacoesProps{
   user: {
@@ -44,6 +44,8 @@ interface SolicitacoesProps{
 let minhasSolicitacoes = [];
 let hospedagensAceitas = [];
 const GHCliente = () => {
+
+  
 
   const [solicitacoes, setSolicitacoes] = useState<any>([]);
   const [isFound, setIsFound] = useState(false);

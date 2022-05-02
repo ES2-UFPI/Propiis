@@ -4,11 +4,13 @@ import {BotaoCancelar, Card, Container, Corpo, Title} from "../../styles/ghHost"
 import { BiArrowToLeft } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { setupApi } from "../../services/api";
+import { useRouter } from "next/router";
 
 let minhasSolicitacoes = [];
 let hospedagensAceitas = [];
 
 const GHHost = () => {
+  const router = useRouter();
 
   const [isFound, setIsFound] = useState(false);
   const [isFound2, setIsFound2] = useState(false);
@@ -64,6 +66,8 @@ const GHHost = () => {
     try{
       const result = await api.put(`/solicitacoes/${id}`, { "status": "Aceita" });
       setRecharge(!reCharge);
+
+      router.reload();
     }catch (e) {
       console.log(e);
     }

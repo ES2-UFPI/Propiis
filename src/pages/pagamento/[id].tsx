@@ -40,12 +40,12 @@ const Pagamento = () => {
     try{
       const result = await api.put(`/solicitacoes/pagamento/${id}`,{ "pago": true});
       
-      alert("pago com sucesso! \nRetornando você para pagina de gerenciamento");
-      router.push("/gh-cliente");
+      
+      router.push("/obrigado");
       setIsFound2(true);
     }catch (e) {
       console.log(e);
-    
+      alert("Ocorreu um erro na hora do pagamento");
     }
   
   }

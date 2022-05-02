@@ -103,9 +103,7 @@ const Home: NextPage = () => {
 
   return (
     <Container>
-      <Corpo>
-        <Header></Header>
-      </Corpo>
+      
 
       <img className="fotohome" src="./images/background-pic.svg" alt="" />
 

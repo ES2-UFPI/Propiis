@@ -2,98 +2,60 @@ import styled from 'styled-components';
 
 export const Container = styled.div` 
     width: 100%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    .perfil{
-        margin-top: 60px;
-        margin-left: -900px;
+    h1.titulo{
+        display: flex;
+        margin: 20px 0px 20px 120px;
 
         font-family: 'Manrope';
         font-style: normal;
         font-weight: 700;
         font-size: 1.8rem;
-        line-height: 125%;
-        text-align: center;
-        color: #0B194A;
-    }
-
-    .hist{
-        width: 281px;
-        height: 35px;
-        margin-left: -650px;
-        margin-top: 60px;
-
-        font-family: 'Manrope';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 27.9583px;
-        line-height: 125%;
-        /* identical to box height, or 35px */
-
-        text-align: center;
-
-        /* azul escuro */
-
+        
+        text-align: left;
         color: #0B194A;
     }
 
     .top{
         display: flex;
+        width: fit-content;
+        gap: 10px;
+        
     }
 
-    .minhas-viagens{
-        margin-left: -388px;
-
-        font-family: 'Manrope';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.8rem;
-        line-height: 125%;
-        text-align: center;
-        color: #0B194A;
-    }
-
-    .icons-agendadas-favoritas{
-        width: 53px;
-        height: 104px;
-        margin-top: 84px;
-        margin-left: -262px;
-        list-style-type: none;
-        border-right: 1px solid #d3d3d3;
-        line-height: 45px;
-        align-items: center;
-    }
-
-    .agendadas-favoritas{
-        width: 116px;
-        height: 33px;
+    .viagens{
         margin-left: 20px;
-        margin-top: 75px;
-        list-style-type: none;
+        
+        ul{
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
 
-        font-family: 'Manrope';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.4rem;
-        line-height: 50px;
+            img{
+                width: 30px;
+            }
 
-        text-align: left;
-        color: #0B194A;
+            li{
+                list-style-type: none;
+            }
+        }
     }
 `;
 
 export const Corpo = styled.div`
-    width: 1449px;
+    width: 100%;
 `;
 
 export const MeuPerfil = styled.div` 
-    width: 1020px;
+    width: 800px;
     height: 320px;
     display: flex;
-    margin-left: -60px;
 
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -101,16 +63,14 @@ export const MeuPerfil = styled.div`
 
     .fotoPerfil{
         margin-top: 0px;
-        margin-left: 60px;
+        margin-left: 30px;
         width: 20%;
     }
 
-    .nome{
+    h2.nome{
         width: 280px;
         height: 50px;
         margin-top: 50px;
-        margin-left: 50px;
-
         font-family: 'Manrope';
         font-style: normal;
         font-weight: 700;
@@ -124,7 +84,7 @@ export const MeuPerfil = styled.div`
         width: 85px;
         height: 110px;
         margin-top: 114px;
-        margin-left: -262px;
+        margin-left: -202px;
         list-style-type: none;
         border-right: 1px solid #d3d3d3;
 
@@ -161,11 +121,12 @@ export const MeuPerfil = styled.div`
     }
 
     .editar{
-        margin-left: 210px;
-        margin-top: 60px;
+        position: relative;
+        right: -160px;
+        top: 10px; 
         width: 120px;
         height: 34px;
-        border-radius: 20px;
+        border-radius: 10px;
 
         font-family: 'Poppins';
         font-style: normal;
@@ -185,13 +146,15 @@ export const MeuPerfil = styled.div`
     }
 
     .alterar{
-        margin-left: -280px;
-        margin-top: 230px;
+        position: relative;
+        right: 20px;
+        top: 250px; 
+
         height: 50px;
         width: 220px;
         border: none;
         background: #49A5E8;
-        border-radius: 20px;
+        border-radius: 10px;
 
         font-family: 'Poppins';
         font-style: normal;
@@ -224,62 +187,108 @@ export const MeuPerfil = styled.div`
 `;
 
 export const Historico = styled.div`
-    width: 808px;
-    height: 250px;
+    width: 670px;
+    height: 220px;
     display: flex;
-    margin-left: 120px;
+    
 
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
     border-radius: 20px;
+    padding: 20px;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #888; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
 
     ul{
-        margin-top: 30px;
-        margin-left: 8px;
-        list-style-type: none;
-        line-height: 45px;
-    }
-
-    .historico{
         display: flex;
-        .mini-foto{
-            width:60px;
-            height: 60px;
-            margin-left: 0px;
-            margin-top: 0px;
-        }
+        flex-direction: column;
+        gap: 10px;
+        
 
-        li{
-            width: 170px;
-            height: 33px;
-            margin-left: -25px;
-            margin-top: 6px;
-            display: inline-block;
+        ul.historico{
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
 
-            font-family: 'Manrope';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 1.4rem;
-            text-align: center;
+            img{
 
-            color: #343837;
-        }
+            }
 
-        .preco{
-            font-family: 'Manrope';
-            font-style: normal;
-            font-weight: 100;
-            font-size: 1.3rem;
-            text-align: center;
+            span{
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 800;
+                font-size: 1.2rem;
 
-            color: #343837;
-        }
+                text-align: center;
 
-        .stars > .star{
-            width: 24px;
-            height: 24px;
-            display: inline-block;
+
+                color: #343837;
+            }
+
+            h3{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 1.1rem;
+
+                color: #212529;
+
+                border-left: 1px solid #bdbfc3;
+                padding-left: 10px;
+            }
         }
     }
 
+`;
+
+
+export const BotaoAvaliar = styled.button`
+    background: #FFFFFF;
+
+    border: 1px solid #0B194A;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    padding: 5px 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 10px; 
+`;
+
+export const Avaliado = styled.div`
+    background: #FFFFFF;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 5px; 
+`;
+
+export const Extra = styled.div`
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px;
+    width: fit-content;
+    width: 700px;
+    height: fit-content;
+
+    margin-left: 120px;
+    margin-bottom: 210px; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
 `;

@@ -76,13 +76,13 @@ const CardPropriedade = ({
             "nome": "Marcos",
             "telefone": "11111111111",
             "imagem_perfil": "",
-            "id": "6269e837fc62aa367a36bbad"
+            "id": "627080cb3da83fae6dd5b3c7"
           },
           "user_host": {
             "nome": "Tiago",
             "telefone": "77777777777",
             "imagem_perfil": "",
-            "id": "6269e853fc62aa367a36bbaf"
+            "id": "627080dd3da83fae6dd5b3c9"
           },
           "propriedade": {
             "titulo": title,
@@ -98,7 +98,7 @@ const CardPropriedade = ({
             "inicio": "2022-05-05",
             "fim": "2022-06-27"
           },
-          "valor_total": 5000
+          "valor_total": price
         }
       );
       alert("proposta realizada com sucesso\ncheque o status da proposta na pagina de\n minhas hospedagens");

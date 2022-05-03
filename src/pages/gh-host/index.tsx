@@ -21,7 +21,7 @@ const GHHost = () => {
   async function loadData(){
     const api = setupApi();
     try{
-      const result = await api.get(`/solicitacoes/recuperar/host?id=6269e853fc62aa367a36bbaf&status=Pendente`);
+      const result = await api.get(`/solicitacoes/recuperar/host?id=627080dd3da83fae6dd5b3c9&status=Pendente`);
       
       //setSolicitacoes(result.data.solicitacoes);
       minhasSolicitacoes = result.data.solicitacoes;
@@ -38,7 +38,7 @@ const GHHost = () => {
   async function loadHospedagensAceitas(){
     const api = setupApi();
     try{
-      const result = await api.get(`/solicitacoes/recuperar/host?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+      const result = await api.get(`/solicitacoes/recuperar/host?id=627080dd3da83fae6dd5b3c9&status=Aceita`);
       
       //setSolicitacoes(result.data.solicitacoes);
       hospedagensAceitas = result.data.solicitacoes;

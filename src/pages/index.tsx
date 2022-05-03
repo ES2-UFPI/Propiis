@@ -198,7 +198,7 @@ const Home: NextPage = () => {
                       srcImg={x.fotos[0]}
                       listImg={x.fotos}
                       price={x.preco_diaria * diferenca}
-                      taxa={x.taxa * x.preco_diaria * diferenca}
+                      taxa={x.taxa}
                       description={x.descricao}
                       shower={x.banheiros}
                       bedrooms={x.quartos}
@@ -214,9 +214,9 @@ const Home: NextPage = () => {
               <>
               <CardPropriedade 
                 title="Apartamento completo na Grande São Paulo"
-                price={diferenca * 100}
-                taxa={0.2}
-                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                price={100}
+                taxa={0.1}
+                description="Casa recém reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
                 shower={2}
                 bedrooms={2}
               />
@@ -224,8 +224,8 @@ const Home: NextPage = () => {
               <CardPropriedade 
                 title="Apartamento completo na Grande São Paulo"
                 price={100}
-                taxa={20}
-                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                taxa={0.1}
+                description="Casa recém reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
                 shower={2}
                 bedrooms={2}
               />

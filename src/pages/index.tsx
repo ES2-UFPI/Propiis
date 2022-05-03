@@ -30,6 +30,11 @@ interface PropriedadesProps{
 	reservada: boolean;
 }
 
+var diamensal1, diamensal2;
+var dict_meses = { 'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04', 'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08', 'Sep': '09', 'Nov': '10', 'Dec': '11'};
+var data1, data2, diferenca; // para fazer a diferenca de datas
+
+
 const Home: NextPage = () => {
   const [value, onChange] = useState(new Date());
   const [value2, onChange2] = useState(new Date());
@@ -45,18 +50,16 @@ const Home: NextPage = () => {
   const [isFound, setIsFound] = useState(false);
   const [propriedades, setPropriedades] = useState<PropriedadesProps[]>([]);
 
-
-  var diamensal1,diamensal2;
-
   function dadosDate(){
     var valores = value.toString();
     var [ diaSemanal, mes, diaMensal, ano, ...rest] = valores.split(' ');
-    console.log(diaMensal, mes, ano);
-    setValorInput1(diaMensal + " " + mes + " "+ ano);
+    console.log(parseInt(diaMensal), dict_meses[mes], ano);
+    setValorInput1(diaMensal + " " + mes + " " + ano);
     diamensal1 = parseInt(diaMensal);
-    
+    data1 = new Date(ano + "/" + dict_meses[mes] + "/" + diaMensal)    //     "28/04/2022"
     setOpenCalendar(false);
   }
+
 
   function fecharDate(){
     setValorInput1("");
@@ -67,12 +70,17 @@ const Home: NextPage = () => {
   function dadosDate2(){
     var valores = value2.toString();
     var [ diaSemanal, mes, diaMensal, ano, ...rest] = valores.split(' ');
-    console.log(diaMensal, mes, ano);
+    console.log(parseInt(diaMensal), dict_meses[mes], ano);
     setValorInput2(diaMensal + " " + mes + " "+ ano);
 
     diamensal2 = parseInt(diaMensal);
+    data2 = new Date(ano + "/" + dict_meses[mes] + "/" + diaMensal)    //     "30/04/2022"
+
+    diferenca = (data2.getTime() - data1.getTime()) / (1000 * 3600 * 24);
+
     setOpenCalendar2(false);
   }
+
 
   function fecharDate2(){
     setValorInput2("");
@@ -83,7 +91,7 @@ const Home: NextPage = () => {
   async function handleSubmit(){
     const api = setupApi();
     try{
-      const result = await api.get(`propriedades/${localizacao}`);
+      const result = await api.get(`propriedades/cidade?cidade=${localizacao}&inicio=2022-05-13&fim=2022-05-18`);
       setPropriedades(result.data.propriedades);
       console.log(propriedades);
       setIsFound(true);
@@ -91,15 +99,12 @@ const Home: NextPage = () => {
       console.log(e);
     }
     
-
-    
-    
   }
 
   return (
     <Container>
       <Corpo>
-        <Header></Header>
+        <Header/>
       </Corpo>
 
       <img className="fotohome" src="./images/background-pic.svg" alt="" />
@@ -188,13 +193,17 @@ const Home: NextPage = () => {
                     
                     <CardPropriedade 
                       key={x._id}
+                      myId={x._id}
                       title={x.titulo}
                       srcImg={x.fotos[0]}
-                      price={x.preco_diaria}
+                      listImg={x.fotos}
+                      price={x.preco_diaria * diferenca}
                       taxa={x.taxa}
                       description={x.descricao}
                       shower={x.banheiros}
                       bedrooms={x.quartos}
+                      cordinates={x.localizacao.coordinates}
+                      localizacao={x.localizacao.cidade}
                     />
                   ) )
                   
@@ -206,8 +215,8 @@ const Home: NextPage = () => {
               <CardPropriedade 
                 title="Apartamento completo na Grande São Paulo"
                 price={100}
-                taxa={20}
-                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                taxa={0.1}
+                description="Casa recém reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
                 shower={2}
                 bedrooms={2}
               />
@@ -215,8 +224,8 @@ const Home: NextPage = () => {
               <CardPropriedade 
                 title="Apartamento completo na Grande São Paulo"
                 price={100}
-                taxa={20}
-                description="Casa rececem reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
+                taxa={0.1}
+                description="Casa recém reformada, jardim impecável, garagens em boa condições, área de lazer e playground para as crianças"
                 shower={2}
                 bedrooms={2}
               />
@@ -229,7 +238,6 @@ const Home: NextPage = () => {
           </Sugestoes>
 
       </Corpo>
-
       <Footer></Footer>
     </Container>
 

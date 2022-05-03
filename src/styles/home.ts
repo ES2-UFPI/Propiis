@@ -198,7 +198,7 @@ export const Sugestoes = styled.div`
         font-family: 'Inter';
         font-style: normal;
         font-weight: 800;
-        font-size: 1.1rem;
+        font-size: 1.0rem;
         line-height: 125%;
         text-align: center;
         /* or 70px */
@@ -216,7 +216,7 @@ export const Sugestoes = styled.div`
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        font-size: 2rem;
+        font-size: 1.5rem;
         line-height: 125%;
         /* or 70px */
 

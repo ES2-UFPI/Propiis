@@ -1,9 +1,15 @@
 import Header from "../../components/Header";
+import { Button, ExtraModal} from "../../components/CardPropriedade/style";
 import { Container, Corpo, MeuPerfil, Historico, BotaoAvaliar, Avaliado, Extra} from "../../styles/perfil";
 import {IoStar} from 'react-icons/io5';
-
+import { useState } from "react";
+import Rating from 'react-simple-star-rating'
+import React from "react";
 
 const Perfil = () => {
+      
+
+    const[open,setOpen] = useState(false);
 
     return (
         <Container>
@@ -64,7 +70,9 @@ const Perfil = () => {
                                 <img className="mini-foto" src="../../images/historico-img.svg"/>
                                 <span>Maragogi - AL</span>
                                 <h3 className="preco">R$: 1500</h3>
-                                <BotaoAvaliar > <IoStar color="#F6CA2A" size={24}/>Avaliar</BotaoAvaliar>
+                                <BotaoAvaliar onClick={() => setOpen(true)}>
+                                    <IoStar color="#F6CA2A" size={24}/> Avaliar
+                                </BotaoAvaliar>
                             </ul>
 
                             <ul className="historico">
@@ -104,9 +112,30 @@ const Perfil = () => {
                                 </Avaliado>
                             </ul>
                         </ul>
-                    
                     </Historico>
                 </Extra>
+                {open?(
+                    <div id="modal-info" className="modal-container">
+                        <div className="modal">
+                        <button className="fechar" onClick={() => setOpen(false)}> X </button>
+                        <h3>Feedback</h3>
+                            <div className="avaliacao">
+                            <Avaliado>
+                                <IoStar color="#F6CA2A" size={24}/>
+                                <IoStar color="#F6CA2A" size={24}/>
+                                <IoStar color="#F6CA2A" size={24}/>
+                                <IoStar color="#F6CA2A" size={24}/>
+                                <IoStar color="#C1BDAF" size={24}/>
+                            </Avaliado>
+                            </div>
+                        <h3>Comentários</h3>
+                            <div className="comentario">
+                                <textarea placeholder="Deixe um comentário..."></textarea>
+                            </div>
+                        </div>
+                    </div>)
+
+                :null}    
             </Corpo>
         </Container>
     )

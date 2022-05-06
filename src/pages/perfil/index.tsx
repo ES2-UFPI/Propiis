@@ -2,14 +2,17 @@ import Header from "../../components/Header";
 import { Button, ExtraModal} from "../../components/CardPropriedade/style";
 import { Container, Corpo, MeuPerfil, Historico, BotaoAvaliar, Avaliado, Extra} from "../../styles/perfil";
 import {IoStar} from 'react-icons/io5';
-import { useState } from "react";
-import Rating from 'react-simple-star-rating'
+import { useEffect, useLayoutEffect, useState } from "react";
+
 import React from "react";
+import { MdStar } from "react-icons/md";
 
 const Perfil = () => {
-      
+    
 
     const[open,setOpen] = useState(false);
+
+    const [stars, setStars] = useState(5);   
 
     return (
         <Container>
@@ -121,11 +124,13 @@ const Perfil = () => {
                         <h3>Feedback</h3>
                             <div className="avaliacao">
                             <Avaliado>
-                                <IoStar color="#F6CA2A" size={24}/>
-                                <IoStar color="#F6CA2A" size={24}/>
-                                <IoStar color="#F6CA2A" size={24}/>
-                                <IoStar color="#F6CA2A" size={24}/>
-                                <IoStar color="#C1BDAF" size={24}/>
+                                {Array(5).fill(0).map((_, idx) => {
+                                    return idx < stars ? (
+                                        <MdStar color="#F6CA2A" onClick={() => setStars(idx+1)} size={24} />
+                                    ) : (
+                                        <MdStar color="#C1BDAF" onClick={() => setStars(idx+1)} size={24} />
+                                    )
+                                })}
                             </Avaliado>
                             </div>
                         <h3>Comentários</h3>

@@ -381,6 +381,11 @@ export const Avaliado = styled.div`
     align-items: center;
     justify-content:center;
     gap: 5px; 
+
+    div#1{
+        background: blue;
+        margin-left: 200px; 
+    }
 `;
 
 export const Extra = styled.div`

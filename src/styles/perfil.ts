@@ -134,6 +134,31 @@ export const Corpo = styled.div`
                     padding-top: 10px;
                 }
             }
+            .botaoAvaliar{
+                display: flex;
+                width: 100%;
+                justify-content: right;
+
+                padding-right: 30px;
+                .botao-avaliar{
+                    margin-top: 20px;
+                    width: 150px;
+                    height: 50px;
+                    border: none;
+                    background: #49A5E8;
+                    border-radius: 10px;
+
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 1.3rem;
+                    color: white;
+
+                    :hover{
+                        opacity: 80%;
+                    }   
+                }
+            }
         }
 
         .fechar{

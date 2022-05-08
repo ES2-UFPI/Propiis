@@ -137,6 +137,9 @@ const Perfil = () => {
                             <div className="comentario">
                                 <textarea placeholder="Deixe um comentário..."></textarea>
                             </div>
+                        <div className="botaoAvaliar">
+                            <button className="botao-avaliar">Avaliar</button>
+                        </div>
                         </div>
                     </div>)
 

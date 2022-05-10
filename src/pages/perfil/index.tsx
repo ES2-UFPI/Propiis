@@ -49,6 +49,9 @@ const Perfil = () => {
                         <img src="../../icons/coracao.svg"/>
                         <li>Favoritas</li>
                     </ul>
+                    <ul>
+                        <li className="propbits">Propibits: 5500</li>
+                    </ul>
                 </div>
                 
             </div>
@@ -75,8 +78,8 @@ const Perfil = () => {
                                     <IoStar color="#F6CA2A" size={24}/>
                                     <IoStar color="#F6CA2A" size={24}/>
                                     <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
+                                    <IoStar color="#C1BDAF" size={24}/>
+                                    <IoStar color="#C1BDAF" size={24}/>
                                 </Avaliado>
                             </ul>
                             <ul className="historico">
@@ -88,7 +91,7 @@ const Perfil = () => {
                                     <IoStar color="#F6CA2A" size={24}/>
                                     <IoStar color="#F6CA2A" size={24}/>
                                     <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#C1BDAF" size={24}/>
+                                    <IoStar color="#F6CA2A" size={24}/>
                                 </Avaliado>
                             </ul>
                             <ul className="historico">

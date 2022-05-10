@@ -46,6 +46,11 @@ export const Container = styled.div`
             }
         }
     }
+
+    .propbits{
+        color: #008822;
+        font-weight: 700;
+    }
 `;
 
 export const Corpo = styled.div`

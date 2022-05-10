@@ -51,6 +51,24 @@ export const Card = styled.div`
     border-radius: 20px;
     padding: 10px;
 
+    
+
+    .title{
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+        
+        justify-content: space-between;
+
+        .left{
+            display: flex;
+        }
+    }
+
+    
+`;
+
+export const BodyCard = styled.div`
     overflow-y: auto;
     
     ::-webkit-scrollbar {
@@ -65,29 +83,76 @@ export const Card = styled.div`
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
+`;
 
-    .title{
+interface propLines {
+    background: string;
+}
+
+export const Lines = styled.div<propLines>`
+    width: 99%;
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: ${ props=> props.background}; 
+
+    .left{
         display: flex;
-        width: 100%;
-        background: orange;
-        justify-content: space-between;
-
-        .left{
-            display: flex;
-        }
+        align-items: center;
     }
-
-    
-`;
-
-export const BodyCard = styled.div`
-    
-`;
-
-export const Lines = styled.div`
     
 `;
 
 export const Space = styled.div`
+    width: 120px;
     
+
+    img{
+        width: 45px;
+        height: 45px;
+    }
+
+    h2{
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1rem;
+        line-height: 125%;
+        /* identical to box height, or 28px */
+
+        text-align: center;
+
+        /* background black */
+
+        color: #343837;
+    }
+
+    h3{
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 24px;
+
+        color: #000000;
+    }
+
+    button{
+        background: #FFFFFF;
+
+        border: 1px solid #0B194A;
+        border-radius: 8px;
+
+        display: flex;
+        align-items: center;
+        padding: 0px 10px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.8rem;
+
+        color: #343837;
+    }
 `;

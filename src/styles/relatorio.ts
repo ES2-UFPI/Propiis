@@ -156,3 +156,57 @@ export const Space = styled.div`
         color: #343837;
     }
 `;
+
+export const Card2 = styled.div`
+    margin-top: 20px;
+    width: 592px;
+    height: 200px;
+    padding: 10px 20px;
+
+    border: 1px solid #8E8E8E;
+    border-radius: 30px;
+
+    h1{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2rem;
+
+        color: #0B194A;
+    }
+
+    .corpo{
+        display: flex;
+        flex-direction: column;
+        height: 80px;
+        margin-top: 10px;
+
+        padding-right: 10px;
+        
+        .line{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        overflow-y: auto;
+    
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    }
+    .resultado{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 16px;
+    }
+`;

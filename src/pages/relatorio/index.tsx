@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BiArrowToLeft } from "react-icons/bi";
 import { IoStar } from "react-icons/io5";
 import Header from "../../components/Header";
-import {BodyCard, Card, Container, H1, Lines, Space} from "../../styles/relatorio";
+import {BodyCard, Card, Card2, Container, H1, Lines, Space} from "../../styles/relatorio";
 
 const Obrigado = () => {
 
@@ -72,6 +72,38 @@ const Obrigado = () => {
                    
                 </BodyCard>
             </Card>
+
+            <Card2>
+                <h1>Recebido no total</h1>
+                <div className="corpo">
+                    <div className="line">
+                        {"4x Diária R$ 300,00"}
+                         
+                        <h3>R$ 1200,00</h3> 
+                    </div>
+                    <div className="line">
+                        4x Diária R$ 300,00 
+                        <h3>R$ 1200,00</h3>
+                    </div>
+                    <div className="line">
+                        4x Diária R$ 300,00 
+                        <h3>R$ 1200,00</h3>
+                    </div>
+                    <div className="line">
+                        4x Diária R$ 300,00 
+                        <h3>R$ 1200,00</h3>
+                    </div>
+                    <div className="line">
+                        4x Diária R$ 300,00 
+                        <h3>R$ 1200,00</h3>
+                    </div>
+                </div>
+                <hr />
+                <div className="resultado">
+                    TOTAL:
+                    <h3>R$ 5000,00</h3>
+                </div>
+            </Card2>
         </Container>
     );
   };

@@ -12,6 +12,7 @@ import router from "next/router";
 
 let minhasSolicitacoes = [];
 let hospedagensAceitas = [];
+let avaliacoes = [];
 const Perfil = () => {
     
 
@@ -54,14 +55,23 @@ const Perfil = () => {
         }
         
     }
-      
+
     useEffect(() => {
         loadData();
         loadHospedagensAceitas();
-    
     },[])
     
-    
+    function exibirEstrelas(n){
+        let array = [];
+        for(let i = 0; i < 5; i++){
+            if(i < n){
+                array.push(<IoStar color="#F6CA2A" size={24}/>);
+            }else{
+                array.push(<IoStar color="#b6b5b3" size={24}/>);
+            }
+        }
+        return array;
+    }
 
     return (
         <Container>
@@ -129,9 +139,19 @@ const Perfil = () => {
                             <img className="mini-foto" src={ x.propriedade?.fotos[0] != "" ? x.propriedade?.fotos[0] : "/images/casinha.svg" }/>
                             <span>{x.propriedade.localizacao.cidade}</span>
                             <h3 className="preco">R$ {x.valor_total}</h3>
-                            <BotaoAvaliar onClick={() => setOpen(true)}>
-                                <IoStar color="#F6CA2A" size={24}/> Avaliar
-                            </BotaoAvaliar>
+                            {x.estrelas == -1 ? 
+                                <BotaoAvaliar onClick={() => setOpen(true)}>
+                                    <IoStar color="#F6CA2A" size={24}/> Avaliar
+                                    
+                                </BotaoAvaliar>
+                                : 
+                                <Avaliado>
+                                    { 
+                                       exibirEstrelas(x.estrelas)
+                                    }
+                                </Avaliado>
+                            }
+                            
                         </ul>
 
                     
@@ -147,6 +167,7 @@ const Perfil = () => {
                         <span>Maragogi - AL</span>
                         <h3 className="preco">R$: 1500</h3>
                         <Avaliado>
+                            
                             <IoStar color="#F6CA2A" size={24}/>
                             <IoStar color="#F6CA2A" size={24}/>
                             <IoStar color="#F6CA2A" size={24}/>

@@ -50,12 +50,12 @@ const GHCliente = () => {
   const [solicitacoes, setSolicitacoes] = useState<any>([]);
   const [isFound, setIsFound] = useState(false);
   const [isFound2, setIsFound2] = useState(false);
- 
   
+
   async function loadData(){
     const api = setupApi();
     try{
-      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e853fc62aa367a36bbaf&status=Pendente`);
+      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Pendente`);
       
       //setSolicitacoes(result.data.solicitacoes);
       minhasSolicitacoes = result.data.solicitacoes;
@@ -66,12 +66,11 @@ const GHCliente = () => {
     }
     
   }
-  
 
   async function loadHospedagensAceitas(){
     const api = setupApi();
     try{
-      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+      const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Aceita`);
       
       //setSolicitacoes(result.data.solicitacoes);
       hospedagensAceitas = result.data.solicitacoes;

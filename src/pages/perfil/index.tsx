@@ -6,13 +6,34 @@ import { useEffect, useLayoutEffect, useState } from "react";
 
 import React from "react";
 import { MdStar } from "react-icons/md";
+import { setupApi } from "../../services/api";
 
 const Perfil = () => {
     
 
     const[open,setOpen] = useState(false);
-
+    const [isFound2, setIsFound2] = useState(false);
     const [stars, setStars] = useState(5);   
+    let hospedagensAceitas = [];
+
+    async function loadHospedagensAceitas(){
+        const api = setupApi();
+        try{
+          const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+          
+          //setSolicitacoes(result.data.solicitacoes);
+          hospedagensAceitas = result.data.solicitacoes;
+          console.log(hospedagensAceitas);
+
+        }catch (e) {
+          console.log(e);
+        }
+        
+      }
+
+    useEffect(() => {
+        loadHospedagensAceitas();
+    },[])
 
     return (
         <Container>

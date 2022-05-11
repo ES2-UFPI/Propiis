@@ -11,6 +11,7 @@ import {MdStar} from "react-icons/md";
 import { setupApi } from "../../services/api";
 
 let hospedagensAceitas = [];
+let soma = 0;
 
 const Obrigado = () => {
 
@@ -79,16 +80,34 @@ const Obrigado = () => {
                 <BodyCard>
                     
                 {
-                    relatorio.map( (x,i)=>{
+                    hospedagensAceitas.map( (x,i)=>{
                         return(
                             <Lines background={i%2 == 0?"#EBF3F5": undefined} key={i} >
                                 <div className="left">
                                     <Space><img src="/images/casinha.svg"/></Space>
                                 
-                                    <Space><h2>Maragogi - AL</h2></Space>
-                                    <Space><h2>R$ 1500,00</h2></Space>
-                                    <Space> <h3>29/05/22</h3></Space>
-                                    <Space><h3>29/05/22</h3></Space>
+                                    <Space><h2>{x.propriedade?.localizacao.cidade}</h2></Space>
+                                    <Space><h2>R$ {x.valor_total}</h2></Space>
+                                    <Space> <h3>{
+                                        x.periodo.inicio[8] + "" + 
+                                        x.periodo.inicio[9] + "/" +
+                                        x.periodo.inicio[5] + "" +
+                                        x.periodo.inicio[6] + "/" +
+                                        x.periodo.inicio[0] + "" +
+                                        x.periodo.inicio[1] + "" +
+                                        x.periodo.inicio[2] + "" +
+                                        x.periodo.inicio[3] + ""
+                                    }</h3></Space>
+                                    <Space><h3>{
+                                        x.periodo.inicio[8] + "" + 
+                                        x.periodo.inicio[9] + "/" +
+                                        x.periodo.inicio[5] + "" +
+                                        x.periodo.inicio[6] + "/" +
+                                        x.periodo.inicio[0] + "" +
+                                        x.periodo.inicio[1] + "" +
+                                        x.periodo.inicio[2] + "" +
+                                        x.periodo.inicio[3] + ""
+                                    }</h3></Space>
                                 </div>
                                 
                                 <Space>
@@ -108,32 +127,21 @@ const Obrigado = () => {
             <Card2>
                 <h1>Recebido no total</h1>
                 <div className="corpo">
-                    <div className="line">
-                        {"4x Diária R$ 300,00"}
-                         
-                        <h3>R$ 1200,00</h3> 
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
+                    {hospedagensAceitas.map(x=>{
+                        soma = soma + x.valor_total;
+
+                        return(
+                            <div className="line">
+                                {"Valor ganho"}
+                                
+                                <h3>R$ {x.valor_total}</h3> 
+                            </div>)
+                    })}
                 </div>
                 <hr />
                 <div className="resultado">
                     TOTAL:
-                    <h3>R$ 5000,00</h3>
+                    <h3>R$ {soma}</h3>
                 </div>
             </Card2>
             {open?(

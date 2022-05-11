@@ -101,6 +101,13 @@ const CardPropriedade = ({
           "valor_total": price
         }
       );
+
+      const user = await api.get(`/auth/627080cb3da83fae6dd5b3c7`)
+      
+      if(user?.avaliacao_geral >= 4){
+        await api.put(`/solicitacoes/`);
+      }
+
       alert("proposta realizada com sucesso\ncheque o status da proposta na pagina de\n minhas hospedagens");
       setOpen(false)
     }catch (e) {

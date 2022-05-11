@@ -124,45 +124,17 @@ const Perfil = () => {
                   
                   {
                     hospedagensAceitas.map(x => (
-                      <div className="dados" key={x._id}>
-                        <h3>{x.propriedade.localizacao.cidade}</h3>
-                        <h3>
-                          {  
-                            x.periodo.inicio[8] + "" + 
-                            x.periodo.inicio[9] + "/" +
-                            x.periodo.inicio[5] + "" +
-                            x.periodo.inicio[6] + "/" +
-                            x.periodo.inicio[0] + "" +
-                            x.periodo.inicio[1] + "" +
-                            x.periodo.inicio[2] + "" +
-                            x.periodo.inicio[3] + ""
-                          }
-                        </h3>
-                        <h3>
-                          {  
-                            x.periodo.fim[8] + "" + 
-                            x.periodo.fim[9] + "/" +
-                            x.periodo.fim[5] + "" +
-                            x.periodo.fim[6] + "/" +
-                            x.periodo.fim[0] + "" +
-                            x.periodo.fim[1] + "" +
-                            x.periodo.fim[2] + "" +
-                            x.periodo.fim[3] + ""
-                          }</h3>
-                        <h3>R$ {x.valor_total}</h3>
-                        {x.pago == true ?
-                          <BotaoCancelar background="#33BB48">Pago</BotaoCancelar> 
-                          : 
-                          <BotaoCancelar 
-                            background="#47568A"
-                            onClick={ ()=> router.push(`/pagamento/${x._id}`)}
-                            >
-                            Pagar
-                          </BotaoCancelar>
-                       
-                        }
-                        <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-                      </div> 
+
+                        <ul className="historico" key={x._id}>
+                            <img className="mini-foto" src={ x.propriedade?.fotos[0] != "" ? x.propriedade?.fotos[0] : "/images/casinha.svg" }/>
+                            <span>{x.propriedade.localizacao.cidade}</span>
+                            <h3 className="preco">R$ {x.valor_total}</h3>
+                            <BotaoAvaliar onClick={() => setOpen(true)}>
+                                <IoStar color="#F6CA2A" size={24}/> Avaliar
+                            </BotaoAvaliar>
+                        </ul>
+
+                    
                     ) )
                     
                   }
@@ -170,23 +142,33 @@ const Perfil = () => {
                 </>
                 :
                 <>
-                  <div className="dados">
-                    <h3>São Paulo</h3>
-                    <h3>29/05/22</h3>
-                    <h3>02/06/22</h3>
-                    <h3>R$ 110,00</h3>
-                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
-                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-                  </div> 
+                    <ul className="historico">
+                        <img className="mini-foto" src="../../images/historico-img.svg"/> 
+                        <span>Maragogi - AL</span>
+                        <h3 className="preco">R$: 1500</h3>
+                        <Avaliado>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                        </Avaliado>
+                    </ul>
 
-                  <div className="dados">
-                    <h3>São Paulo</h3>
-                    <h3>29/05/22</h3>
-                    <h3>02/06/22</h3>
-                    <h3>R$ 110,00</h3>
-                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
-                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
-                  </div> 
+                    <ul className="historico">
+                        <img className="mini-foto" src="../../images/historico-img.svg"/> 
+                        <span>Maragogi - AL</span>
+                        <h3 className="preco">R$: 1500</h3>
+                        <Avaliado>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                            <IoStar color="#F6CA2A" size={24}/>
+                        </Avaliado>
+                    </ul>
+
+                 
                 </>
               }
                             

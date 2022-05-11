@@ -351,7 +351,9 @@ export const Historico = styled.div`
             gap: 10px;
 
             img{
-
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
             }
 
             span{

@@ -7,33 +7,61 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import React from "react";
 import { MdStar } from "react-icons/md";
 import { setupApi } from "../../services/api";
+import { BotaoCancelar } from "../../styles/ghCliente";
+import router from "next/router";
 
+let minhasSolicitacoes = [];
+let hospedagensAceitas = [];
 const Perfil = () => {
     
 
     const[open,setOpen] = useState(false);
-    const [isFound2, setIsFound2] = useState(false);
+   
     const [stars, setStars] = useState(5);   
-    let hospedagensAceitas = [];
 
-    async function loadHospedagensAceitas(){
+    const [found, setFound] = useState(false);
+    
+    const [isFound, setIsFound] = useState(false);
+    const [isFound2, setIsFound2] = useState(false);
+
+    async function loadData(){
         const api = setupApi();
         try{
-          const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+          const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Pendente`);
           
           //setSolicitacoes(result.data.solicitacoes);
-          hospedagensAceitas = result.data.solicitacoes;
-          console.log(hospedagensAceitas);
-
+          minhasSolicitacoes = result.data.solicitacoes;
+          console.log(minhasSolicitacoes);
+          setIsFound(true);
+          
         }catch (e) {
           console.log(e);
         }
         
-      }
+    }
 
+    async function loadHospedagensAceitas(){
+        const api = setupApi();
+        try{
+          const result = await api.get(`/solicitacoes/recuperar/usuario?id=6269e837fc62aa367a36bbad&status=Aceita`);
+          
+          //setSolicitacoes(result.data.solicitacoes);
+          hospedagensAceitas = result.data.solicitacoes;
+          console.log(hospedagensAceitas);
+          setIsFound2(true);
+        }catch (e) {
+          console.log(e);
+        }
+        
+    }
+      
     useEffect(() => {
+        loadData();
         loadHospedagensAceitas();
+    
     },[])
+    
+    
 
     return (
         <Container>
@@ -90,51 +118,78 @@ const Perfil = () => {
                 <Extra>
                     <Historico>
                         <ul>
-                            <ul className="historico">
-                                <img className="mini-foto" src="../../images/historico-img.svg"/>
-                                <span>Maragogi - AL</span>
-                                <h3 className="preco">R$: 1500</h3>
-                                <BotaoAvaliar onClick={() => setOpen(true)}>
-                                    <IoStar color="#F6CA2A" size={24}/> Avaliar
-                                </BotaoAvaliar>
-                            </ul>
+                        
+                        {isFound2 ?  
+                <>
+                  
+                  {
+                    hospedagensAceitas.map(x => (
+                      <div className="dados" key={x._id}>
+                        <h3>{x.propriedade.localizacao.cidade}</h3>
+                        <h3>
+                          {  
+                            x.periodo.inicio[8] + "" + 
+                            x.periodo.inicio[9] + "/" +
+                            x.periodo.inicio[5] + "" +
+                            x.periodo.inicio[6] + "/" +
+                            x.periodo.inicio[0] + "" +
+                            x.periodo.inicio[1] + "" +
+                            x.periodo.inicio[2] + "" +
+                            x.periodo.inicio[3] + ""
+                          }
+                        </h3>
+                        <h3>
+                          {  
+                            x.periodo.fim[8] + "" + 
+                            x.periodo.fim[9] + "/" +
+                            x.periodo.fim[5] + "" +
+                            x.periodo.fim[6] + "/" +
+                            x.periodo.fim[0] + "" +
+                            x.periodo.fim[1] + "" +
+                            x.periodo.fim[2] + "" +
+                            x.periodo.fim[3] + ""
+                          }</h3>
+                        <h3>R$ {x.valor_total}</h3>
+                        {x.pago == true ?
+                          <BotaoCancelar background="#33BB48">Pago</BotaoCancelar> 
+                          : 
+                          <BotaoCancelar 
+                            background="#47568A"
+                            onClick={ ()=> router.push(`/pagamento/${x._id}`)}
+                            >
+                            Pagar
+                          </BotaoCancelar>
+                       
+                        }
+                        <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
+                      </div> 
+                    ) )
+                    
+                  }
 
-                            <ul className="historico">
-                                <img className="mini-foto" src="../../images/historico-img.svg"/> 
-                                <span>Maragogi - AL</span>
-                                <h3 className="preco">R$: 1500</h3>
-                                <Avaliado>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                </Avaliado>
-                            </ul>
-                            <ul className="historico">
-                                <img className="mini-foto" src="../../images/historico-img.svg"/> 
-                                <span>Maragogi - AL</span>
-                                <h3 className="preco">R$: 1500</h3>
-                                <Avaliado>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#C1BDAF" size={24}/>
-                                </Avaliado>
-                            </ul>
-                            <ul className="historico">
-                                <img className="mini-foto" src="../../images/historico-img.svg"/> 
-                                <span>Maragogi - AL</span>
-                                <h3 className="preco">R$: 1500</h3>
-                                <Avaliado>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#F6CA2A" size={24}/>
-                                    <IoStar color="#C1BDAF" size={24}/>
-                                </Avaliado>
-                            </ul>
+                </>
+                :
+                <>
+                  <div className="dados">
+                    <h3>São Paulo</h3>
+                    <h3>29/05/22</h3>
+                    <h3>02/06/22</h3>
+                    <h3>R$ 110,00</h3>
+                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
+                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
+                  </div> 
+
+                  <div className="dados">
+                    <h3>São Paulo</h3>
+                    <h3>29/05/22</h3>
+                    <h3>02/06/22</h3>
+                    <h3>R$ 110,00</h3>
+                    <BotaoCancelar background="#33BB48">Pago</BotaoCancelar>
+                    <BotaoCancelar background="#E32A51">Conversar</BotaoCancelar>
+                  </div> 
+                </>
+              }
+                            
                         </ul>
                     </Historico>
                 </Extra>

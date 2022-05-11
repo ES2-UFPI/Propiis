@@ -69,6 +69,9 @@ const Perfil = () => {
     
     function exibirEstrelas(n){
         let array = [];
+        if(n <= 0){
+            n = 5;
+        }
         for(let i = 0; i < 5; i++){
             if(i < n){
                 array.push(<IoStar color="#F6CA2A" size={24}/>);

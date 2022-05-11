@@ -1,13 +1,16 @@
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiArrowToLeft } from "react-icons/bi";
 import { IoStar } from "react-icons/io5";
 import Header from "../../components/Header";
 import {Avaliado, BodyCard, Card, Card2, Container, H1, Lines, Space} from "../../styles/relatorio";
 
 import {MdStar} from "react-icons/md";
+import { setupApi } from "../../services/api";
+
+let hospedagensAceitas = [];
 
 const Obrigado = () => {
 
@@ -20,8 +23,33 @@ const Obrigado = () => {
         {lugar:"Maragogi - AL",preco:1500,checkIn:"29/05/22",checkOut:"29/05/22"}
     ]);
     const[open,setOpen] = useState(false);
-
+    const[setIsFound,setIsFound2] = useState(false);
+    
     const [stars, setStars] = useState(5);
+
+    async function loadHospedagensAceitas(){
+        const api = setupApi();
+        try{
+          const result = await api.get(`/solicitacoes/recuperar/host?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+          
+          //setSolicitacoes(result.data.solicitacoes);
+          hospedagensAceitas = result.data.solicitacoes;
+          console.log(hospedagensAceitas);
+          setIsFound2(true);
+          
+        }catch (e) {
+          console.log(e);
+        }
+        
+      }
+    
+      
+      
+      useEffect(() => {
+        loadHospedagensAceitas();
+       },[])
+    
+
     return (
         <Container>
             <div className="voltar">

@@ -167,6 +167,9 @@ const Perfil = () => {
                         <img src="../../icons/coracao.svg"/>
                         <li>Favoritas</li>
                     </ul>
+                    <ul>
+                        <li className="propbits">Propibits: 5500</li>
+                    </ul>
                 </div>
                 
             </div>

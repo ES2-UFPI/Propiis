@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, ExtraModal} from "./style";
 import { MdBedroomParent, MdShower } from 'react-icons/md';
 import dynamic from "next/dynamic";
@@ -46,7 +46,7 @@ const CardPropriedade = ({
 
   const[openMap, setOpenMap] = useState(false);
 
-  
+  const[status, setStatus] = useState("Pendente");
 
 
   var images = [ 
@@ -67,8 +67,26 @@ const CardPropriedade = ({
     images = listImg;
   }
 
+  async function mostrarDados(){
+    const api = setupApi();
+    const user = await api.get<any>(`/auth/6269e837fc62aa367a36bbad`);
+
+    let estrelas =  user.data.user.avaliacao_geral;
+
+    if(estrelas >= 4){
+      setStatus("Aceita");
+    }
+  }
+
+
+  useEffect(() => {
+    mostrarDados();
+  },[]);
+
   async function prestarSolicitacao(){
     const api = setupApi();
+    
+    
     try{
       const result = await api.post(`/solicitacoes/solicitar`,
         {
@@ -76,13 +94,13 @@ const CardPropriedade = ({
             "nome": "Marcos",
             "telefone": "11111111111",
             "imagem_perfil": "",
-            "id": "627080cb3da83fae6dd5b3c7"
+            "id": "6269e837fc62aa367a36bbad"
           },
           "user_host": {
             "nome": "Tiago",
             "telefone": "77777777777",
             "imagem_perfil": "",
-            "id": "627080dd3da83fae6dd5b3c9"
+            "id": "6269e853fc62aa367a36bbaf"
           },
           "propriedade": {
             "titulo": title,
@@ -98,9 +116,12 @@ const CardPropriedade = ({
             "inicio": "2022-05-05",
             "fim": "2022-06-27"
           },
-          "valor_total": price
+          "valor_total": price,
+          "status": status
         }
       );
+      
+
       alert("proposta realizada com sucesso\ncheque o status da proposta na pagina de\n minhas hospedagens");
       setOpen(false)
     }catch (e) {

@@ -165,7 +165,12 @@ const Obrigado = () => {
                                 <textarea placeholder="Deixe um comentário..."></textarea>
                             </div>
                         <div className="botaoAvaliar">
-                            <button className="botao-avaliar">Avaliar</button>
+                            <button 
+                                className="botao-avaliar"
+                                onClick={() => setOpen(false)}
+                                >
+                                    Avaliar
+                            </button>
                         </div>
                         </div>
                     </div>)

@@ -45,7 +45,7 @@ const Header = () => {
           <li><a href="/perfil">Meu perfil</a></li>
           <li><a href="/gh-cliente">Minhas Hospedagens</a></li>
           <li><a href="/gh-host">Minhas Propriedades</a></li>
-          <li>Favoritos</li>
+          <li><a href="/relatorio">Relatório Geral</a></li>
           <li id="sair">Sair</li>
         </ul>
         :

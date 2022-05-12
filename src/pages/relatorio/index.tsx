@@ -1,13 +1,17 @@
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiArrowToLeft } from "react-icons/bi";
 import { IoStar } from "react-icons/io5";
 import Header from "../../components/Header";
 import {Avaliado, BodyCard, Card, Card2, Container, H1, Lines, Space} from "../../styles/relatorio";
 
 import {MdStar} from "react-icons/md";
+import { setupApi } from "../../services/api";
+
+let hospedagensAceitas = [];
+let soma = 0;
 
 const Obrigado = () => {
 
@@ -20,8 +24,33 @@ const Obrigado = () => {
         {lugar:"Maragogi - AL",preco:1500,checkIn:"29/05/22",checkOut:"29/05/22"}
     ]);
     const[open,setOpen] = useState(false);
-
+    const[setIsFound,setIsFound2] = useState(false);
+    
     const [stars, setStars] = useState(5);
+
+    async function loadHospedagensAceitas(){
+        const api = setupApi();
+        try{
+          const result = await api.get(`/solicitacoes/recuperar/host?id=6269e853fc62aa367a36bbaf&status=Aceita`);
+          
+          //setSolicitacoes(result.data.solicitacoes);
+          hospedagensAceitas = result.data.solicitacoes;
+          console.log(hospedagensAceitas);
+          setIsFound2(true);
+          
+        }catch (e) {
+          console.log(e);
+        }
+        
+      }
+    
+      
+      
+      useEffect(() => {
+        loadHospedagensAceitas();
+       },[])
+    
+
     return (
         <Container>
             <div className="voltar">
@@ -51,16 +80,34 @@ const Obrigado = () => {
                 <BodyCard>
                     
                 {
-                    relatorio.map( (x,i)=>{
+                    hospedagensAceitas.map( (x,i)=>{
                         return(
                             <Lines background={i%2 == 0?"#EBF3F5": undefined} key={i} >
                                 <div className="left">
                                     <Space><img src="/images/casinha.svg"/></Space>
                                 
-                                    <Space><h2>Maragogi - AL</h2></Space>
-                                    <Space><h2>R$ 1500,00</h2></Space>
-                                    <Space> <h3>29/05/22</h3></Space>
-                                    <Space><h3>29/05/22</h3></Space>
+                                    <Space><h2>{x.propriedade?.localizacao.cidade}</h2></Space>
+                                    <Space><h2>R$ {x.valor_total}</h2></Space>
+                                    <Space> <h3>{
+                                        x.periodo.inicio[8] + "" + 
+                                        x.periodo.inicio[9] + "/" +
+                                        x.periodo.inicio[5] + "" +
+                                        x.periodo.inicio[6] + "/" +
+                                        x.periodo.inicio[0] + "" +
+                                        x.periodo.inicio[1] + "" +
+                                        x.periodo.inicio[2] + "" +
+                                        x.periodo.inicio[3] + ""
+                                    }</h3></Space>
+                                    <Space><h3>{
+                                        x.periodo.inicio[8] + "" + 
+                                        x.periodo.inicio[9] + "/" +
+                                        x.periodo.inicio[5] + "" +
+                                        x.periodo.inicio[6] + "/" +
+                                        x.periodo.inicio[0] + "" +
+                                        x.periodo.inicio[1] + "" +
+                                        x.periodo.inicio[2] + "" +
+                                        x.periodo.inicio[3] + ""
+                                    }</h3></Space>
                                 </div>
                                 
                                 <Space>
@@ -80,32 +127,21 @@ const Obrigado = () => {
             <Card2>
                 <h1>Recebido no total</h1>
                 <div className="corpo">
-                    <div className="line">
-                        {"4x Diária R$ 300,00"}
-                         
-                        <h3>R$ 1200,00</h3> 
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
-                    <div className="line">
-                        4x Diária R$ 300,00 
-                        <h3>R$ 1200,00</h3>
-                    </div>
+                    {hospedagensAceitas.map(x=>{
+                        soma = soma + x.valor_total;
+
+                        return(
+                            <div className="line">
+                                {"Valor ganho"}
+                                
+                                <h3>R$ {x.valor_total}</h3> 
+                            </div>)
+                    })}
                 </div>
                 <hr />
                 <div className="resultado">
                     TOTAL:
-                    <h3>R$ 5000,00</h3>
+                    <h3>R$ {soma}</h3>
                 </div>
             </Card2>
             {open?(
@@ -129,7 +165,12 @@ const Obrigado = () => {
                                 <textarea placeholder="Deixe um comentário..."></textarea>
                             </div>
                         <div className="botaoAvaliar">
-                            <button className="botao-avaliar">Avaliar</button>
+                            <button 
+                                className="botao-avaliar"
+                                onClick={() => setOpen(false)}
+                                >
+                                    Avaliar
+                            </button>
                         </div>
                         </div>
                     </div>)
